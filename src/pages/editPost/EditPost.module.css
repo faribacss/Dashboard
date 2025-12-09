@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css?family=Fjalla+One&display=swap");
+
+.pageContainer {
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-items: center;
+  padding: 20px;
+}
+
+.contactUs {
+  background: #f8f4e5;
+  padding: 50px 100px;
+  border: 2px solid rgba(0, 0, 0, 1);
+  border-radius: 15px;
+  box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px rgba(0, 0, 0, 1);
+}
+
+.formTitle {
+  font-family: "Fjalla One", sans-serif;
+  font-size: 24pt;
+  color: #2a293e;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+}
+
+.input,
+.textarea {
+  display: block;
+  width: 100%;
+  font-size: 14pt;
+  line-height: 28pt;
+  font-family: "Fjalla One", sans-serif;
+  margin-bottom: 28pt;
+  border: none;
+  border-bottom: 5px solid rgba(0, 0, 0, 1);
+  background: #f8f4e5;
+  min-width: 250px;
+  padding-left: 5px;
+  outline: none;
+  color: rgba(0, 0, 0, 1);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+  padding-top: 5px;
+}
+
+.input:focus,
+.textarea:focus {
+  border-bottom: 5px solid #ffa580;
+}
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus,
+.textarea:-webkit-autofill,
+.textarea:-webkit-autofill:hover,
+.textarea:-webkit-autofill:focus {
+  border-bottom: 5px solid #95a4ff;
+  -webkit-text-fill-color: #2a293e;
+  -webkit-box-shadow: 0 0 0px 1000px #f8f4e5 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.button {
+  display: inline-block;
+  line-height: 28pt;
+  padding: 0 20px;
+  background: #ffa580;
+  letter-spacing: 2px;
+  transition: 0.2s all ease-in-out;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 1);
+  box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
+  font-family: "Fjalla One", sans-serif;
+  font-size: 14pt;
+  cursor: pointer;
+  color: #2a293e;
+}
+
+.button:hover {
+  background: rgba(0, 0, 0, 1);
+  color: white;
+  border: 1px solid rgba(0, 0, 0, 1);
+}
+
+.buttonDelete {
+  background: #ff6b6b;
+}
+
+.buttonDelete:hover {
+  background: #c92a2a;
+  color: white;
+}
+
+.buttonCancel {
+  background: #95a4ff;
+}
+
+.buttonCancel:hover {
+  background: rgba(0, 0, 0, 1);
+  color: white;
+}
+
+.loadingContainer {
+  text-align: center;
+  margin-top: 20px;
+  font-family: "Fjalla One", sans-serif;
+  font-size: 18pt;
+  color: #2a293e;
+}
+
+::selection {
+  background: #ffc8ff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contactUs {
+    padding: 30px 40px;
+    width: 85%;
+  }
+
+  .buttonGroup {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactUs {
+    padding: 20px 30px;
+  }
+
+  .formTitle {
+    font-size: 18pt;
+  }
+
+  .input,
+  .textarea {
+    font-size: 12pt;
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "navbar": {
+    "hello": "سلام {{name}}!",
+    "panelMessage": "خوش آمدید",
+    "logout": "خروج",
+    "login": "ورود",
+    "home": "خانه",
+    "allPosts": "تمام پست‌ها",
+    "userPanel": "پنل کاربری",
+    "createNewPost": "ایجاد پست جدید",
+    "projects": "پروژه‌ها",
+    "team": "تیم",
+    "reports": "گزارش‌ها",
+    "user": "کاربر",
+    "settings": "تنظیمات",
+    "editPost": "ویرایش پست",
+    "postDetails": "جزئیات پست"
+  },
+  "footer": {
+    "BlogPage": "صفحه وبلاگ",
+    "description": "یک پلتفرم ساده برای به اشتراک گذاری افکار و ایده‌های شما با جهان.",
+    "rights": "تمام حقوق محفوظ است © "
+  },
+  "posts": {
+    "Postby": "نوشته شده توسط",
+    "ShowMore": "نمایش بیشتر",
+    "CreateNewPost": "ایجاد پست جدید",
+    "title": "عنوان",
+    "Write": "چیزی بنویسید...",
+    "ImageURL": "لینک تصویر",
+    "author": "نویسنده",
+    "CreatePost": "ایجاد پست",
+    "Cancel": "لغو",
+    "description": "تمام پست‌ها اینجا هستند"
+  },
+  "panel": {
+    "CreateNewPost": "ایجاد پست جدید",
+    "allPostsLabel": "مشاهده تمام پست‌ها",
+    "allPostsDesc": "تمام پست‌ها اینجا هستند",
+    "favorites": "هنوز پست مورد علاقه‌ای وجود ندارد",
+    "searchPosts": "جستجوی پست‌ها..."
+  },
+  "dashboard": {
+    "totalPageviews": "کل بازدیدها",
+    "publishedPosts": "پست‌های منتشر شده",
+    "activeAuthors": "نویسندگان فعال",
+    "createPost": "ایجاد پست",
+    "weeklyChart": "نمودار میله‌ای هفتگی",
+    "review": "بررسی",
+    "postTitle": "عنوان پست",
+    "username": "نام کاربری",
+    "author": "نویسنده",
+    "actions": "عملیات",
+    "noTitle": "بدون عنوان",
+    "errorLoading": "خطا در دریافت پست‌ها",
+    "noPosts": "هیچ پستی یافت نشد"
+  },
+  "editPosts": {
+    "editPost": "ویرایش پست",
+    "content": "محتوا",
+    "imageURL": "لینک تصویر",
+    "edit": "ویرایش",
+    "delete": "حذف",
+    "cancel": "لغو",
+    "confirmEdit": "آیا مطمئن هستید که می‌خواهید پست را ویرایش کنید؟",
+    "confirm": "تأیید",
+    "NoConfirm": "خیر، ویرایش نکن",
+    "confirmDelete": "آیا مطمئن هستید که می‌خواهید پست را حذف کنید؟",
+    "noDelete": "خیر، حذف نکن"
+  },
+  "postId": {
+    "Published": "منتشر شده",
+    "EditedPost": "پست ویرایش شده",
+    "EditPost": "ویرایش",
+    "BacktoHome": "بازگشت به خانه"
+  },
+  "login": {
+    "title": "خوش آمدید!",
+    "subtitle": "برای ورود به حساب خود اطلاعات را وارد کنید",
+    "emailLabel": "ایمیل خود را وارد کنید",
+    "passwordLabel": "رمز عبور",
+    "remember": "برای ۳۰ روز به‌خاطر بسپار",
+    "directive": "rtl",
+    "button": {
+      "login": "ورود",
+      "signing": "در حال ورود...",
+      "success": "✓ ورود موفقیت‌آمیز!"
+    },
+    "noAccount": "حساب کاربری ندارید؟",
+    "signup": "ثبت نام"
+  },
+  "signup": {
+    "title": "ثبت نام کنید!",
+    "usernameLabel": "نام کاربری خود را وارد کنید",
+    "emailLabel": "ایمیل خود را وارد کنید",
+    "passwordLabel": "رمز عبور",
+    "policy": "من با شرایط و سیاست‌ها موافقم.",
+    "button": {
+      "signup": "ثبت نام",
+      "registering": "در حال ثبت نام...",
+      "success": "✓ ثبت نام موفقیت‌آمیز!"
+    },
+    "haveAccount": "حساب کاربری دارید؟",
+    "login": "ورود"
+  },
+  "alerts": {
+    "loginSuccess": "شما با موفقیت وارد شدید!",
+    "signupSuccess": "شما با موفقیت ثبت نام کردید!",
+    "loginError": "خطا در ورود. لطفاً دوباره تلاش کنید.",
+    "signupError": "خطا در ثبت نام. لطفاً دوباره تلاش کنید.",
+    "defaultSuccess": "عملیات با موفقیت انجام شد!",
+    "defaultError": "خطایی رخ داده است. لطفاً دوباره تلاش کنید.",
+    "customMessage": "شناسه یا رمز عبور نامعتبر است.",
+    "createPostSuccess": "پست با موفقیت ایجاد شد!",
+    "createPostError": "ایجاد پست ناموفق بود. لطفاً دوباره تلاش کنید.",
+    "editPostSuccess": "پست با موفقیت ویرایش شد!",
+    "editPostError": "ویرایش پست ناموفق بود. لطفاً دوباره تلاش کنید."
+  },
+  "loginErrorMessages": {
+    "emailRequired": "ایمیل اجباری است",
+    "emailMessage": "لطفا یک ایمیل معتبر وارد کنید",
+    "passwordRequired": "رمز عبور اجباری است",
+    "passwordMessage": "رمز عبور باید حداقل ۶ کاراکتر باشد"
+  },
+  "calendar": {
+    "gregorian": "میلادی",
+    "jalali": "شمسی"
+  },
+  "signupErrorMessages": {
+    "usernameRequired": "نام کاربری اجباری است",
+    "usernameMin": "نام کاربری باید حداقل ۳ کاراکتر باشد",
+    "usernameMatches": "نام کاربری باید با یک حرف یا عدد شروع شود",
+    "emailRequired": "ایمیل اجباری است",
+    "emailMessage": "فرمت ایمیل نامعتبر است",
+    "passwordRequired": "رمز عبور اجباری است",
+    "passwordMin": "رمز عبور باید حداقل ۶ کاراکتر باشد",
+    "passwordMax": "رمز عبور باید حداکثر ۲۰ کاراکتر باشد",
+    "passwordMatches": "رمز عبور باید حداقل شامل یک حرف بزرگ، یک حرف کوچک و یک عدد باشد"
+  }
+}

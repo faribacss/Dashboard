@@ -1,0 +1,230 @@
+/* en fonts */
+@font-face {
+  font-family: "BricolageBold";
+  src: url("@/assets/public/fonts/en/BricolageBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Geologica";
+  src: url("@/assets/public/fonts/en/Geologica.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Chango";
+  src: url("@/assets/public/fonts/en/Chango.ttf") format("truetype");
+}
+@font-face {
+  font-family: "JosefinSans";
+  src: url("@/assets/public/fonts/en/JosefinSans.ttf") format("truetype");
+}
+/* fa fonts */
+@font-face {
+  font-family: "VazirBold";
+  src: url("@/assets/public/fonts/fa/VazirBold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "VazirMedium";
+  src: url("@/assets/public/fonts/fa/VazirMedium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Lalezar";
+  src: url("@/assets/public/fonts/fa/LalezarRegular.otf") format("opentype");
+}
+@font-face {
+  font-family: "Yekan";
+  src: url("@/assets/public/fonts/fa/BYekan.ttf") format("truetype");
+}
+@font-face {
+  font-family: "YekanBold";
+  src: url("@/assets/public/fonts/fa/BYekanBold.ttf") format("truetype");
+}
+/* ko fonts */
+@font-face {
+  font-family: "CafeDongdong";
+  src: url("@/assets/public/fonts/ko/Cafe24Dongdong-v2.0.woff") format("woff");
+}
+@font-face {
+  font-family: "MoneygraphyRounded";
+  src: url("@/assets/public/fonts/ko/Moneygraphy-Rounded.woff") format("woff");
+}
+@font-face {
+  font-family: "JejuMyeongjo";
+  src: url("@/assets/public/fonts/ko/JejuMyeongjo-Regular.ttf")
+    format("truetype");
+}
+
+/* tailwind Style */
+@import "tailwindcss";
+
+/* global style */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scrollbar-width: none;
+}
+body {
+  background-color: #070e24fb;
+}
+/* Custom alert Font */
+.custom-swal {
+  font-family: "BricolageBold", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+/* login and sign up Common css styles */
+.connections {
+  width: 190px;
+  height: 32px;
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid #d9d9d9;
+}
+
+.auth-title {
+  font-family: "Geologica";
+  font-weight: 800;
+  font-size: 30px;
+  letter-spacing: 0.01em;
+  gap: 10px;
+}
+
+.auth-text-field {
+  width: 404px;
+  height: 58px;
+  margin: 5px 0px;
+}
+.auth-checkBox {
+  margin: 2px 0;
+}
+.auth-button-base {
+  width: 404px;
+  height: 48px;
+  padding: 10px;
+  border-radius: 10px;
+  color: #ffffff;
+}
+
+.auth-primary-button:enabled {
+  background-color: #3a5b22;
+  border: 1px solid #3a5b22;
+}
+
+.auth-primary-button:hover {
+  background-color: #2d4619;
+}
+
+.auth-disabled-button {
+  color: #666666;
+  background-color: #cccccc;
+  border: 1px solid #cccccc;
+}
+
+.auth-disabled-button:hover {
+  background-color: #cccccc;
+}
+
+.auth-or-text {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.auth-connections-stack {
+  width: 100%;
+  margin-top: 16px;
+  justify-content: center;
+}
+
+.auth-bottom-text {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.auth-link {
+  text-decoration: none;
+}
+
+.auth-image-box {
+  background-image: url("assets/public/img/1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left;
+  width: 781.5px;
+  min-height: 100vh;
+  border-top-left-radius: 45px;
+  border-bottom-left-radius: 45px;
+}
+
+/* Social Login Icons */
+.google-icon {
+  color: #4285f4 !important;
+}
+
+.apple-icon {
+  color: #000000 !important;
+}
+
+/* media query */
+@media screen and (max-width: 720px) {
+  .auth-image-box {
+    max-width: 100%;
+    border-radius: 0;
+  }
+  .auth-text-field,
+  .auth-button-base {
+    max-width: 70% !important;
+  }
+  .auth-title {
+    font-size: 24px !important;
+  }
+  .lang-root[lang="en"] label,
+  .lang-root[lang="ko"] label {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    left: 18%;
+  }
+  .lang-root[lang="fa"] label {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    right: 11%;
+  }
+}
+
+/* persian font */
+.lang-root[lang="fa"] h1,
+.lang-root[lang="fa"] h2,
+.lang-root[lang="fa"] h3,
+.lang-root[lang="fa"] h4,
+.lang-root[lang="fa"] h5,
+.lang-root[lang="fa"] h6,
+.lang-root[lang="fa"] p,
+.lang-root[lang="fa"] span,
+.lang-root[lang="fa"] .auth-primary-button,
+.lang-root[lang="fa"] input::placeholder,
+.lang-root[lang="fa"] .auth-title {
+  font-family: "Yekan", sans-serif;
+}
+.lang-root[lang="fa"] .custom-swal {
+  font-family: "Lalezar", sans-serif;
+}
+
+/* english font */
+.lang-root[lang="en"] {
+  font-family: "Geologica", "JosefinSans", sans-serif;
+}
+
+/* korean font */
+.lang-root[lang="ko"] {
+  font-family: "PinkfongBabySharkBold", sans-serif;
+}
+.lang-root[lang="ko"] .auth-primary-button,
+.lang-root[lang="ko"] .auth-title {
+  font-family: "MoneygraphyRounded", sans-serif;
+}
+.lang-root[lang="ko"] input::placeholder,
+.lang-root[lang="ko"] span,
+.lang-root[lang="ko"] p,
+.lang-root[lang="ko"] .custom-swal {
+  font-family: "JejuMyeongjo", sans-serif;
+}

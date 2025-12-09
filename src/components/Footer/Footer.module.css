@@ -1,0 +1,130 @@
+/* Persian Fonts */
+.faFont .brand,
+.faFont .logo,
+.faFont .slogan,
+.faFont .copyright {
+  font-family: "Yekan", sans-serif !important;
+}
+/* English Fonts */
+.enFont .brand,
+.enFont .logo,
+.enFont .slogan,
+.enFont .copyright {
+  font-family: "JosefinSans", sans-serif !important;
+}
+/* Korean Fonts */
+.koFont .brand,
+.koFont .logo,
+.koFont .slogan,
+.koFont .copyright {
+  font-family: "JejuMyeongjo", sans-serif !important;
+}
+
+.footer {
+  width: 100%;
+  margin-top: 80px;
+  background: #172f7050;
+  border-top: 1px solid #cb3cffb4;
+  color: bisque;
+  padding: 25px;
+  font-family: "Vazirmatn", "Roboto", sans-serif;
+  z-index: 10;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: bisque;
+}
+
+.slogan {
+  font-size: 1.1rem;
+  color: bisque;
+  font-weight: 400;
+  margin-top: 0.2rem;
+}
+
+.socials {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  font-size: 1.7rem;
+  box-shadow: 0 2px 8px 0 rgba(0, 198, 255, 0.08);
+}
+.socialLink:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 0 0 2px var(--icon-hover-color, #0f2027);
+  color: var(--icon-hover-color, #0f2027);
+}
+.icon {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+.copyright {
+  text-align: center;
+  color: rgba(255, 228, 196, 0.651);
+  font-size: 0.75rem;
+  margin-top: 2rem;
+  letter-spacing: 0.5px;
+}
+.wave {
+  display: block; 
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 720px) {
+  .wave {
+    height: 100px; 
+    object-fit: cover;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .container {
+    flex-direction: column;
+    padding: 12px 0;
+  }
+  .socials {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .logo{
+    font-size: 19px;
+  }
+  .slogan{
+    font-size: 14px;
+  }
+}

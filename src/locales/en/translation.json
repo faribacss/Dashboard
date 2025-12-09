@@ -1,0 +1,140 @@
+{
+  "navbar": {
+    "hello": "Hello {{name}}!",
+    "panelMessage": "Welcome",
+    "logout": "Logout",
+    "login": "Login",
+    "home": "Home",
+    "allPosts": "All Posts",
+    "userPanel": "Dashboard",
+    "createNewPost": "Create New Post",
+    "projects": "Projects",
+    "team": "Team",
+    "reports": "Reports",
+    "user": "User",
+    "settings": "Settings",
+    "editPost": "Edit Post",
+    "postDetails": "Post Details"
+  },
+  "footer": {
+    "BlogPage": "Blog Page",
+    "description": "A simple blogging platform to share your thoughts and ideas with the world.",
+    "rights": "All rights reserved ©"
+  },
+  "posts": {
+    "Postby": "Post by",
+    "ShowMore": "Show More",
+    "CreateNewPost": "Create New Post",
+    "title": "Title",
+    "Write": "Write something awesome...",
+    "ImageURL": "Image URL",
+    "author": "Author",
+    "CreatePost": "Create Post",
+    "Cancel": "Cancel",
+    "description": "All Posts are here"
+  },
+  "editPosts": {
+    "editPost": "Edit Post",
+    "content": "Content",
+    "imageURL": "Image URL",
+    "edit": "Edit",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "confirmEdit": "Are you sure you want to edit the post?",
+    "confirm": "Confirm",
+    "NoConfirm": "No, don't edit",
+    "confirmDelete": "Are you sure you want to delete the post?",
+    "noDelete": "No, don't delete"
+  },
+  "postId": {
+    "Published": "Published",
+    "EditedPost": "Edited Post",
+    "EditPost": "Edit Post",
+    "BacktoHome": "Back to Home"
+  },
+  "panel": {
+    "CreateNewPost": "Create New Post",
+    "allPostsLabel": "See All Posts",
+    "allPostsDesc": "All Posts are here",
+    "favorites": "There is no favorite post yet",
+    "searchPosts": "Search posts..."
+  },
+  "dashboard": {
+    "totalPageviews": "Total Pageviews",
+    "publishedPosts": "Published Posts",
+    "activeAuthors": "Active Authors",
+    "createPost": "Create Post",
+    "weeklyChart": "Weekly Data Bar Chart",
+    "review": "Review",
+    "postTitle": "Post Title",
+    "username": "Username",
+    "author": "Author",
+    "actions": "Actions",
+    "noTitle": "No Title",
+    "errorLoading": "Error loading posts",
+    "noPosts": "No posts found"
+  },
+  "login": {
+    "title": "Welcome back!",
+    "subtitle": "Enter your Credentials to access your account",
+    "emailLabel": "Enter your email",
+    "passwordLabel": "Password",
+    "remember": "Remember for 30 days",
+    "directive": "ltr",
+    "button": {
+      "login": "Login",
+      "signing": "Signing in...",
+      "success": "✓ Login Successful!"
+    },
+    "noAccount": "Don't have an account?",
+    "signup": "Sign Up"
+  },
+  "signup": {
+    "title": "Create an account!",
+    "usernameLabel": "Enter your username",
+    "emailLabel": "Enter your email",
+    "passwordLabel": "Password",
+    "policy": "I agree to the terms and policies.",
+    "button": {
+      "signup": "Sign Up",
+      "registering": "Registering...",
+      "success": "✓ Registration Successful!"
+    },
+    "haveAccount": "Already have an account?",
+    "login": "Login"
+  },
+  "alerts": {
+    "loginSuccess": "You have successfully logged in!",
+    "signupSuccess": "You have successfully signed up!",
+    "loginError": "Login failed! Please check your credentials.",
+    "signupError": "Sign Up failed! Please check your input.",
+    "defaultSuccess": "successful!",
+    "defaultError": "An error occurred. Please try again.",
+    "customMessage": "Invalid identifier or password.",
+    "createPostSuccess": "Post created successfully!",
+    "createPostError": "Failed to create post. Please try again.",
+    "editPostSuccess": "Post edited successfully!",
+    "editPostError": "Failed to edit post. Please try again."
+  },
+  "loginErrorMessages": {
+    "emailRequired": "Email is required",
+    "emailMessage": "Please enter a valid email address",
+    "passwordRequired": "Password is required",
+    "passwordMessage": "Password must be at least 6 characters"
+  },
+  "calendar": {
+    "gregorian": "Gregorian",
+    "jalali": "Persian"
+  },
+  "signupErrorMessages": {
+    "usernameRequired": "Username is required",
+    "usernameMin": "Username must be at least 3 characters",
+    "usernameMatches": "Username must start with a letter or number",
+    "emailRequired": "Email is required",
+    "emailMessage": "Invalid email format",
+    "passwordRequired": "Password is required",
+    "passwordMin": "Password must be at least 6 characters",
+    "passwordMax": "Password must be at most 20 characters",
+    "passwordMatches": "Password must contain at least one uppercase letter, one lowercase letter, and one number"
+  }
+}

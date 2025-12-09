@@ -1,0 +1,107 @@
+/* Persian Fonts */
+.faFont .content,
+.faFont .showMoreBtn a {
+  font-family: "Yekan", sans-serif !important;
+}
+/* English Fonts */
+.enFont .content,
+.enFont .showMoreBtn a {
+  font-family: "JosefinSans", sans-serif !important;
+}
+/* Korean Fonts */
+.koFont .content,
+.koFont .showMoreBtn a {
+  font-family: "JejuMyeongjo", sans-serif !important;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.cardImg {
+  width: 350px;
+  margin: 0 auto;
+  height: 210px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+.spacer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.avatar {
+  background-color: brown;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.publishedAt {
+  font-size: 0.7rem;
+  color: gray;
+  padding: 10px;
+}
+.cardBody {
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  margin: 5px;
+  padding: 10px 5px;
+  border-radius: 20px;
+  transition: all 0.3s ease-in-out;
+}
+.cardBody:hover {
+  transform: scale(1.06);
+}
+.cardContent {
+  padding: 15px 10px;
+}
+
+.showMoreBtn {
+  all: unset;
+  padding: 15px 0;
+  cursor: pointer;
+}
+.showMoreBtn a {
+  color: rgb(10, 47, 116);
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.showMoreBtn a:hover {
+  color: rgb(71, 121, 141);
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  white-space: wrap;
+}
+.Content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.content {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px;
+}
+
+
+@media screen and (max-width: 720px) {
+  .cardImg{
+    width: 458px;
+    height: 350px;
+    margin: 10px auto;
+  }
+}

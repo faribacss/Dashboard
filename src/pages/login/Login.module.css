@@ -1,0 +1,48 @@
+/* ToLogin Component Specific Styles */
+.mainContainer{
+  background-color: aliceblue !important;
+}
+.container {
+  margin: 50px auto;
+}
+.subtitle {
+  margin-bottom: 30px;
+  font-weight: 400;
+  font-size: 16px;
+}
+/* .forgotpass{
+    position: relative;
+}
+.forgotpass::after {
+    content: 'forgot password';
+    direction: rtl;
+    position: absolute;
+    bottom: -3px;
+    right: 0;
+    display: block;
+    width: 100%;
+    height: 1px;
+    color: #0C2A92;
+    cursor: pointer;
+} */
+
+.rememberMeLabel {
+  width: fit-content;
+}
+
+@media screen and (max-width: 720px) {
+  .container {
+    margin: 100px auto 20px;
+  }
+  .subtitle{
+    font-size: 13px !important;
+  }
+  section{
+    text-align: center;
+  }
+}
+
+.lang-root[lang="ko"] .subtitle {
+  font-family: "JejuMyeongjo",  sans-serif;
+  font-size: 20px;
+}

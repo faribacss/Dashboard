@@ -1,0 +1,57 @@
+/* Persian Fonts */
+.faFont p {
+  font-family: "Yekan", sans-serif !important;
+}
+.faFont .panelHello {
+  font-family: "Lalezar", sans-serif !important;
+  font-size: 25px;
+}
+/* English Fonts */
+.enFont p {
+  font-family: "BricolageBold", sans-serif !important;
+}
+.enFont .panelHello {
+  font-family: "Chango", sans-serif !important;
+  font-size: 25px;
+}
+/* Korean Fonts */
+.koFont p {
+  font-family: "JejuMyeongjo", sans-serif !important;
+}
+.koFont .panelHello {
+  font-family: "CafeDongdong", sans-serif !important;
+  font-size: 25px;
+}
+
+.navbarAppBar {
+  background-color: #cb3cff !important;
+  z-index: 999 !important;
+  width: 100% !important;
+  position: fixed !important;
+  margin: 15px auto;
+  display: flex !important;
+  align-items: center !important;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.navbarBox,
+.panelHello {
+  color: bisque !important;
+}
+.navbarMenuIcon {
+  background-color: rgba(196, 210, 255, 0.452) !important;
+}
+
+.subtitle {
+  background-color: rgba(64, 95, 196, 0.452) !important;
+  border-radius: 15px;
+  padding: 8px 15px;
+  margin: 5px;
+  border: 1px solid #cb3cffb4;
+  transition: all 0.3s ease-in;
+}
+
+.panelHello {
+  text-align: center;
+  margin: 5px;
+  padding: 8px 15px;
+}

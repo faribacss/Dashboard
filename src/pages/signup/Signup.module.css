@@ -1,0 +1,22 @@
+/* ToSignUp Component Specific Styles */
+.mainContainer{
+  background-color: aliceblue !important;
+}
+.container {
+  margin: 0 auto;
+}
+.title {
+  margin: 20px 0;
+}
+.policyLabel {
+  width: fit-content;
+}
+
+@media screen and (max-width: 720px) {
+  .container {
+    margin: 100px auto 20px;
+  }
+  section{
+    text-align: center;
+  }
+}
