@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { useTranslation } from "react-i18next";
-import Aos from "aos"; // اگرچه Aos.init بهتر است خارج از کامپوننت باشد
+import Aos from "aos";
 
 // context
 import { SaveInfoContext } from "@/context/SaveInfo";

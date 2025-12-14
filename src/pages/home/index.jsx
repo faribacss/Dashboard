@@ -1,6 +1,5 @@
 // library
 import { useTranslation } from "react-i18next";
-// import styled from "styled-components";
 
 // styles
 import styles from "@/pages/home/Home.module.css";

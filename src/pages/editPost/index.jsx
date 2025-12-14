@@ -122,7 +122,6 @@ function EditPost() {
             </Typography>
 
             <Grid container spacing={3}>
-              {/* بخش عنوان - مهمترین بخش */}
               <Grid item xs={12}>
                 <TextField
                   fullWidth
@@ -134,7 +133,6 @@ function EditPost() {
                 />
               </Grid>
 
-              {/* نویسنده و آدرس عکس در کنار هم */}
               <Grid item xs={12} md={6}>
                 <TextField
                   fullWidth
@@ -156,12 +154,11 @@ function EditPost() {
                 />
               </Grid>
 
-              {/* ویرایشگر متن اصلی */}
               <Grid item xs={12}>
                 <TextField
                   label={t("editPosts.content")}
                   multiline
-                  minRows={10} // ارتفاع مناسب برای نوشتن
+                  minRows={10} 
                   variant="outlined"
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
@@ -171,7 +168,6 @@ function EditPost() {
               </Grid>
             </Grid>
 
-            {/* دکمه‌ها */}
             <Stack
               direction={{ xs: "column", sm: "row" }}
               spacing={2}
