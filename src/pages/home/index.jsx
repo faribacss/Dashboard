@@ -1,5 +1,6 @@
 // library
 import { useTranslation } from "react-i18next";
+// import styled from "styled-components";
 
 // styles
 import styles from "@/pages/home/Home.module.css";
@@ -30,38 +31,41 @@ function Home() {
   return (
     <>
       <Navbar />
-      <Box sx={{maxWidth: "1400px", margin: "0 auto", padding: "20px"}}>
-        <Grid container className={styles.gridContainer}>
-          {/* <div className={styles.homeInfo}>
-          <h4>{t("posts.description")}</h4>
-        </div> */}
-          <Grid size={{md: 4, xs: 6}} className={styles.searchContainer}>
+      <Box sx={{ maxWidth: "1400px", margin: "0 auto", padding: "20px" }}>
+        <Grid container className={styles.gridContainer} spacing={3}>
+          <Grid
+            item
+            xs={12}
+            sm={8}
+            md={6}
+            lg={4}
+            sx={{ mx: "auto", mt: 3, mb: 3 }}
+          >
             <TextField
               className={styles.searchBox}
               onChange={handleSearchChange}
               placeholder={t("panel.searchPosts")}
               type="search"
+              fullWidth
             />
           </Grid>
-          <Grid size={12} className={styles.postsItemsContainer}>
+
+          <Grid Container className={styles.postsItemsContainer}>
             {isLoading ? (
-              <Typography
-                sx={{
-                  textAlign: "center",
-                  fontWeight: "bold",
-                  color: "bisque",
-                }}
+              <Container
+                className="dots-container"
+                sx={{ display: "flex", justifyContent: "center" }}
               >
-                Loading ...
-              </Typography>
+                <Typography>Loading ...</Typography>
+              </Container>
             ) : (
-              <Box className={styles.postsContainer}>
+              <Grid container spacing={4} className={styles.postsContainer}>
                 {filteredPosts?.map((post) => (
-                  <Box className={styles.postItems} key={post.id}>
+                  <Grid key={post.id} className={styles.postItems}>
                     <HomeArticles {...post} />
-                  </Box>
+                  </Grid>
                 ))}
-              </Box>
+              </Grid>
             )}
           </Grid>
         </Grid>

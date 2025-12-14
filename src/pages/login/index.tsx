@@ -43,7 +43,7 @@ export const buildLoginSchema = (t: any) =>
       .min(6, t("loginErrorMessages.passwordMessage")),
   });
 
-function ToLogin() {
+function LoginPage() {
   const { t, i18n } = useTranslation();
   const isRtl = i18n?.language?.startsWith("fa");
   const loginSchema = useMemo(() => buildLoginSchema(t), [t, i18n?.language]);
@@ -239,4 +239,4 @@ function ToLogin() {
     </div>
   );
 }
-export default ToLogin;
+export default LoginPage;

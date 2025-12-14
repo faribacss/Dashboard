@@ -5,7 +5,7 @@
   max-width: 100%;
   height: 450px;
   margin: 20px auto;
-  background: linear-gradient(135deg, #172255 0%, #1f60d8 100%);
+  background: linear-gradient(135deg, #FF6A64 0%, #FFB199 100%);
 }
 
 .header {
@@ -36,7 +36,7 @@
 
 .toggleButton[aria-pressed="true"] {
   background-color: rgba(255, 255, 255, 0.9) !important;
-  color: #667eea !important;
+  color: #FFB199 !important;
   font-weight: bold !important;
 }
 .calendarWrapper {
@@ -64,17 +64,17 @@
 }
 
 .calendarWrapper :global(.MuiPickersDay-today) {
-  border: 2px solid #1f60d8 !important;
+  border: 2px solid #FF6A64 !important;
   background-color: rgba(31, 96, 216, 0.1) !important;
 }
 
 .calendarWrapper :global(.Mui-selected) {
-  background-color: #1f60d8 !important;
+  background-color: #FF6A64 !important;
   box-shadow: 0 2px 8px rgba(31, 96, 216, 0.4) !important;
 }
 
 .calendarWrapper :global(.Mui-selected:hover) {
-  background-color: #1a50b8 !important;
+  background-color: #FF6A64 !important;
 }
 
 /* یکشنبه‌ها قرمز (برای تقویم میلادی) */
@@ -108,7 +108,7 @@
 
 /* هدر تقویم */
 .jalaliCalendar :global(.rmdp-header) {
-  background-color: #1f60d8 !important;
+  background-color: #FF6A64 !important;
   border-radius: 8px !important;
   margin-bottom: 10px !important;
   padding: 12px 10px !important;
@@ -135,7 +135,7 @@
 
 /* نام روزهای هفته */
 .jalaliCalendar :global(.rmdp-week-day) {
-  color: #1f60d8 !important;
+  color: #301716 !important;
   font-weight: 700 !important;
   font-size: 12px !important;
   font-family: "Vazirmatn", "IRANSans", sans-serif !important;
@@ -162,21 +162,21 @@
 .jalaliCalendar
   :global(.rmdp-day:not(.rmdp-disabled):not(.rmdp-day-hidden) span:hover) {
   background-color: rgba(31, 96, 216, 0.15) !important;
-  color: #1f60d8 !important;
+  color: #FF6A64 !important;
 }
 
 /* روز امروز */
 .jalaliCalendar :global(.rmdp-today span) {
   background-color: rgba(31, 96, 216, 0.1) !important;
-  color: #1f60d8 !important;
-  border: 2px solid #1f60d8 !important;
+  color: #FF6A64 !important;
+  border: 2px solid #FF6A64 !important;
   font-weight: 700 !important;
 }
 
 /* روز انتخاب شده */
 .jalaliCalendar :global(.rmdp-selected span),
 .jalaliCalendar :global(.rmdp-day.rmdp-selected span:not(.highlight)) {
-  background-color: #1f60d8 !important;
+  background-color: #FF6A64 !important;
   color: #fff !important;
   box-shadow: 0 2px 8px rgba(31, 96, 216, 0.4) !important;
   font-weight: 600 !important;

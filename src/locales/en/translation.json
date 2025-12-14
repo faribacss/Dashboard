@@ -50,7 +50,8 @@
     "Published": "Published",
     "EditedPost": "Edited Post",
     "EditPost": "Edit Post",
-    "BacktoHome": "Back to Home"
+    "BacktoHome": "Back to Home",
+    "Author": "Author"
   },
   "panel": {
     "CreateNewPost": "Create New Post",
@@ -64,7 +65,8 @@
     "publishedPosts": "Published Posts",
     "activeAuthors": "Active Authors",
     "createPost": "Create Post",
-    "weeklyChart": "Weekly Data Bar Chart",
+    "weeklyChart": "Weekly",
+    "monthlyChart": "Monthly",
     "review": "Review",
     "postTitle": "Post Title",
     "username": "Username",

@@ -2,18 +2,12 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
-const API_BASE_URL = "https://strapi.arvanschool.ir/api";
-
-let TOKEN = ""; // Bearer Token
-
-export function setToken(token) {
-  TOKEN = token;
-}
+const API_BASE_URL = "https://strapi.arvanschool.ir/";
 
 function getAuthHeaders() {
   return {
     "Content-Type": "application/json",
-    ...(TOKEN && { Authorization: `Bearer ${TOKEN}` }),
+    Authorization: `Bearer ${localStorage.getItem("jwt")}`,
   };
 }
 
@@ -23,7 +17,7 @@ export function GetAllPost() {
     queryKey: ["posts"],
     queryFn: () =>
       axios
-        .get(`${API_BASE_URL}/posts?populate=*`, {
+        .get(`${API_BASE_URL}api/posts/`, {
           headers: getAuthHeaders(),
         })
         .then((res) => res.data.data),
@@ -37,7 +31,7 @@ export function GetPostById(documentId) {
     queryKey: ["post", documentId],
     queryFn: () =>
       axios
-        .get(`${API_BASE_URL}/posts/${documentId}`, {
+        .get(`${API_BASE_URL}api/posts/${documentId}`, {
           headers: getAuthHeaders(),
         })
         .then((res) => res.data.data),
@@ -52,7 +46,7 @@ export default function CreateOnePost() {
     mutationFn: (postData) =>
       axios
         .post(
-          `${API_BASE_URL}/posts`,
+          `${API_BASE_URL}api/posts`,
           { data: postData },
           { headers: getAuthHeaders() }
         )
@@ -67,19 +61,22 @@ export default function CreateOnePost() {
 }
 
 // Edit (update) a Post
-export function EditPostById(documentId) {
+export function EditPostById() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (postData) =>
+    mutationFn: ({ documentId, postData }) =>
       axios
         .put(
-          `${API_BASE_URL}/posts/${documentId}`,
+          `${API_BASE_URL}api/posts/${documentId}`,
           { data: postData },
           { headers: getAuthHeaders() }
         )
         .then((res) => res.data.data),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["editPost", documentId] });
+
+    onSuccess: (data, variables) => {
+      queryClient.invalidateQueries({
+        queryKey: ["post", variables.documentId],
+      });
       queryClient.invalidateQueries(["posts"]);
     },
     onError: (error) => {
@@ -89,11 +86,18 @@ export function EditPostById(documentId) {
 }
 
 // Delete a Post
-export function DeletePostById(documentId) {
+export function DeletePostById() {
+  const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: () =>
-      axios.delete(`${API_BASE_URL}/posts/${documentId}`, {
+    mutationFn: (documentId) =>
+      axios.delete(`${API_BASE_URL}api/posts/${documentId}`, {
         headers: getAuthHeaders(),
       }),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["posts"]);
+    },
+    onError: (error) => {
+      console.error("Error deleting post:", error);
+    },
   });
 }

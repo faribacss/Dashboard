@@ -24,7 +24,7 @@
 }
 
 .navbarAppBar {
-  background-color: #cb3cff !important;
+  background: linear-gradient(to right, #ff6a64, #ffb199);
   z-index: 999 !important;
   width: 100% !important;
   position: fixed !important;
@@ -42,14 +42,20 @@
 }
 
 .subtitle {
-  background-color: rgba(64, 95, 196, 0.452) !important;
+  color: rgba(29, 24, 22, 0.644);
+}
+.helloText {
+  background-color: #f5825f !important;
+  color: rgb(29, 24, 22);
+  font-size: 18px;
+  font-weight: 700;
   border-radius: 15px;
   padding: 8px 15px;
-  margin: 5px;
-  border: 1px solid #cb3cffb4;
+  margin: 15px 5px;
+  border: 1px solid #f5825f;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   transition: all 0.3s ease-in;
 }
-
 .panelHello {
   text-align: center;
   margin: 5px;

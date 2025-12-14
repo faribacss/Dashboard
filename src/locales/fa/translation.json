@@ -45,7 +45,8 @@
     "publishedPosts": "پست‌های منتشر شده",
     "activeAuthors": "نویسندگان فعال",
     "createPost": "ایجاد پست",
-    "weeklyChart": "نمودار میله‌ای هفتگی",
+    "weeklyChart": "هفتگی",
+    "monthlyChart": "ماهانه",
     "review": "بررسی",
     "postTitle": "عنوان پست",
     "username": "نام کاربری",
@@ -72,7 +73,8 @@
     "Published": "منتشر شده",
     "EditedPost": "پست ویرایش شده",
     "EditPost": "ویرایش",
-    "BacktoHome": "بازگشت به خانه"
+    "BacktoHome": "بازگشت به خانه",
+    "Author": "نویسنده"
   },
   "login": {
     "title": "خوش آمدید!",

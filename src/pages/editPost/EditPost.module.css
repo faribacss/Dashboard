@@ -1,19 +1,23 @@
-@import url("https://fonts.googleapis.com/css?family=Fjalla+One&display=swap");
+/* @import url("https://fonts.googleapis.com/css?family=Fjalla+One&display=swap");
 
 .pageContainer {
-  width: 100vw;
+  width: 90vw;
   height: 100vh;
+  margin: 0 auto;
   align-items: center;
   justify-items: center;
   padding: 20px;
 }
 
 .contactUs {
-  background: #f8f4e5;
+  width: 100%;
   padding: 50px 100px;
-  border: 2px solid rgba(0, 0, 0, 1);
-  border-radius: 15px;
-  box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px rgba(0, 0, 0, 1);
+  border-top-right-radius: 150px;
+  border-bottom-left-radius: 150px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: 5px solid #ff6b6b;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .formTitle {
@@ -33,24 +37,29 @@
   line-height: 28pt;
   font-family: "Fjalla One", sans-serif;
   margin-bottom: 28pt;
-  border: none;
-  border-bottom: 5px solid rgba(0, 0, 0, 1);
-  background: #f8f4e5;
-  min-width: 250px;
+  border-radius: 8px;
+  background: #f5e9bf;
+  padding: 15px;
   padding-left: 5px;
-  outline: none;
   color: rgba(0, 0, 0, 1);
 }
 
 .textarea {
   resize: vertical;
-  min-height: 120px;
-  padding-top: 5px;
+  min-height: 320px;
+  scrollbar-width: thin;
+}
+
+.inputsContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
 .input:focus,
 .textarea:focus {
-  border-bottom: 5px solid #ffa580;
+  border-right: 5px solid #ffa580;
 }
 
 .input:-webkit-autofill,
@@ -124,7 +133,6 @@
   background: #ffc8ff;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .contactUs {
     padding: 30px 40px;
@@ -152,5 +160,117 @@
   .input,
   .textarea {
     font-size: 12pt;
+  }
+} */
+
+
+
+
+@import url("https://fonts.googleapis.com/css?family=Fjalla+One&display=swap");
+
+.pageContainer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.editorCard {
+  width: 100%;
+  padding: 40px;
+  border-radius: 20px !important;
+  background: #ffffff;
+  /* یک افکت شیشه‌ای ملایم و سایه مدرن */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.formTitle {
+  font-family: "Fjalla One", sans-serif !important;
+  color: #2a293e;
+  text-align: center;
+  margin-bottom: 40px !important;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #ff6b6b;
+  display: inline-block;
+  padding-bottom: 10px;
+  /* مرکز چین کردن تایتل */
+  width: 100%; 
+}
+
+/* استایل‌دهی به فیلدهای متریال */
+.inputField :global(.MuiOutlinedInput-root),
+.contentArea :global(.MuiOutlinedInput-root) {
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+  font-family: "Fjalla One", sans-serif !important;
+}
+
+.inputField :global(.MuiOutlinedInput-root):hover,
+.contentArea :global(.MuiOutlinedInput-root):hover {
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.inputField :global(.MuiOutlinedInput-root.Mui-focused),
+.contentArea :global(.MuiOutlinedInput-root.Mui-focused) {
+  background-color: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* فونت لیبل‌ها */
+.inputField :global(.MuiInputLabel-root),
+.contentArea :global(.MuiInputLabel-root) {
+  font-family: "Fjalla One", sans-serif !important;
+  color: #666;
+}
+.contentArea{
+  width: 100%;
+}
+
+.buttonGroup {
+  margin-top: 40px;
+  justify-content: flex-end; /* دکمه‌ها سمت راست باشند */
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.saveBtn {
+  background-color: #2a293e !important;
+  font-family: "Fjalla One", sans-serif !important;
+  padding: 10px 30px !important;
+  border-radius: 10px !important;
+}
+
+.saveBtn:hover {
+  background-color: #ff6b6b !important;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  font-family: "Fjalla One", sans-serif;
+  font-size: 18pt;
+  color: #2a293e;
+}
+
+/* ریسپانسیو */
+@media (max-width: 600px) {
+  .editorCard {
+    padding: 20px;
+  }
+  
+  .buttonGroup {
+    justify-content: center;
+  }
+  
+  .saveBtn {
+    width: 100%;
   }
 }

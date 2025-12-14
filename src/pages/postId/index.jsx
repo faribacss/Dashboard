@@ -1,6 +1,4 @@
 // library
-import { useContext} from "react";
-import { SaveInfoContext } from "@/context/SaveInfo";
 import { Link, useParams } from "react-router-dom";
 import Aos from "aos";
 import { useTranslation } from "react-i18next";
@@ -18,7 +16,6 @@ import Navbar from "@/components/Navbar";
 function PostId() {
   Aos.init({ duration: 1000 });
 
-  const { user } = useContext(SaveInfoContext);
   const { documentId } = useParams();
   const { t } = useTranslation();
   const { data: post, isLoading } = GetPostById(documentId);
@@ -27,6 +24,8 @@ function PostId() {
     post &&
     post.updatedAt &&
     post.publishedAt &&
+    post.title &&
+    post.author &&
     new Date(post.updatedAt).getTime() !== new Date(post.publishedAt).getTime();
 
   if (isLoading) {
@@ -44,41 +43,44 @@ function PostId() {
     );
   }
 
+  if (!post) {
+    return (
+      <div
+        style={{
+          textAlign: "center",
+          marginTop: "80px",
+          fontSize: "20px",
+          fontWeight: "bold",
+          color: "red",
+        }}
+      >
+        {t("Post not found")}
+      </div>
+    );
+  }
+
   return (
     <>
-    <Navbar />
-      <div className={styles.card}>
-        <div className={styles.cardContainer} data-aos="fade-up">
-          <div className={styles.upperContainer}>
-            <img
-              src={post.url || errorImg}
-              alt="post image"
-              className={styles.postImage}
-            />
-          </div>
-          <div className={styles.avatarWrapper}>
-            <div className={styles.imageContainer}>
-              <div className={styles.avatar}>
-                {user.username.charAt(0).toUpperCase()}
+      <Navbar />
+      <div className={styles.postLayout}>
+        <div className={styles.stickySideBar} data-aos="fade-right">
+          <img
+            src={post.url || errorImg}
+            alt="post image"
+            className={styles.postImage}
+          />
+          <div className={styles.postInfo}>
+            <div className={styles.avatarWrapper}>
+              <div className={styles.imageContainer}>
+                <div className={styles.avatar}>
+                  {post.author ? post.author.charAt(0).toUpperCase() : "?"}
+                </div>
               </div>
             </div>
-          </div>
-          <div className={styles.lowerContainer}>
-            <div>
-              <h3>{user.username}</h3>
-              <h4>
-                {t("postId.Published")}:{" "}
+            <div className={styles.metaText}>
+              <h4 className={styles.publishDate}>
                 {new Date(post.publishedAt).toLocaleDateString()}
               </h4>
-            </div>
-            <div>
-              <p>{post.content}</p>
-              {isEdited ? (
-                <h4>
-                  {t("postId.EditedPost")}:{" "}
-                  {new Date(post.updatedAt).toLocaleDateString()}
-                </h4>
-              ) : null}
             </div>
             <div className={styles.buttonGroup}>
               <Link to={`/edit-post/${documentId}`} className={styles.btn}>
@@ -88,6 +90,26 @@ function PostId() {
                 {t("postId.BacktoHome")}
               </Link>
             </div>
+          </div>
+        </div>
+
+        <div className={styles.postContent} data-aos="fade-up">
+          <div className={styles.contentHeader}>
+            <h1 className={styles.postTitle}>{post.title}</h1>
+            <div className={styles.metaData}>
+              <span className={styles.authorTag}>
+                {t("postId.Author")}: <strong>{post.author}</strong>
+              </span>
+              {isEdited && (
+                <span className={styles.editTag}>
+                  {t("postId.EditedPost")}:{" "}
+                  {new Date(post.updatedAt).toLocaleDateString()}
+                </span>
+              )}
+            </div>
+          </div>
+          <div className={styles.postBody}>
+            <p>{post.content}</p>
           </div>
         </div>
       </div>

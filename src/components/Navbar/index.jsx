@@ -87,7 +87,7 @@ export default function Navbar() {
   const handleDrawerClose = () => setMobileOpen(false);
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex"}}>
       <CssBaseline />
 
       {isMobile ? (

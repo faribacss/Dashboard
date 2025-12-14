@@ -1,8 +1,6 @@
 .gridContainer {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
   gap: 20px;
   padding: 20px;
 }
@@ -23,27 +21,27 @@
 }
 
 .searchBox :global(.MuiOutlinedInput-notchedOutline) {
-  border: 2px solid #ff69b4 !important;
+  border: 2px solid #ff6a64 !important;
 }
 
 .searchBox:hover :global(.MuiOutlinedInput-notchedOutline) {
-  border: 2px solid #ff69b4 !important;
+  border: 2px solid #ff6a64 !important;
 }
 
 .searchBox
   :global(.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline) {
-  border: 2px solid #ff69b4 !important;
+  border: 2px solid #ff6a64 !important;
   box-shadow: 0 6px 25px rgba(255, 105, 180, 0.25);
 }
 
 .searchBox :global(.MuiInputBase-input) {
   padding: 14px 24px !important;
   font-size: 16px;
-  color: #fff;
+  color: #331907;
 }
 
 .searchBox :global(.MuiInputBase-input::placeholder) {
-  color: #ff69b4 !important;
+  color: #ff6a64 !important;
   opacity: 0.7;
 }
 

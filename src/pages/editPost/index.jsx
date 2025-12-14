@@ -2,13 +2,15 @@
 import Aos from "aos";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { useNavigate } from "react-router";
+import { useParams, useNavigate } from "react-router";
 
 // utilities
 import showSuccessAlert from "@/utilities/showSuccessAlert";
 import showErrorAlert from "@/utilities/showErrorAlert";
-import {showEditConfirm , showDeleteConfirm} from "@/utilities/showEditDeleteToast";
+import {
+  showEditConfirm,
+  showDeleteConfirm,
+} from "@/utilities/showEditDeleteToast";
 
 // style
 import styles from "@/pages/editPost/EditPost.module.css";
@@ -16,6 +18,19 @@ import styles from "@/pages/editPost/EditPost.module.css";
 // services
 import { GetPostById, EditPostById, DeletePostById } from "@/services/posts";
 import Navbar from "@/components/Navbar";
+import {
+  Container,
+  Grid,
+  Typography,
+  TextField,
+  Paper,
+  Button,
+  Stack,
+  Box,
+} from "@mui/material";
+import SaveIcon from "@mui/icons-material/Save";
+import DeleteIcon from "@mui/icons-material/Delete";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 function EditPost() {
   Aos.init({ duration: 1000 });
@@ -27,12 +42,15 @@ function EditPost() {
   const [content, setContent] = useState("");
   const [url, setUrl] = useState("");
   const [title, setTitle] = useState("");
-  const [writer, setWriter] = useState("");
-  const updateMutation = EditPostById(documentId);
-  const deleteMutation = DeletePostById(documentId);
+  const [author, setAuthor] = useState("");
+
+  const updateMutation = EditPostById();
+  const deleteMutation = DeletePostById();
 
   useEffect(() => {
     if (post) {
+      setTitle(post.title || "");
+      setAuthor(post.author || "");
       setContent(post.content || "");
       setUrl(post.url || "");
     }
@@ -44,7 +62,16 @@ function EditPost() {
       t,
       onConfirm: () => {
         updateMutation.mutate(
-          { content, url, modifiedDate: new Date().toISOString() },
+          {
+            documentId: documentId,
+            postData: {
+              title,
+              author,
+              content,
+              url,
+              modifiedDate: new Date().toISOString(),
+            },
+          },
           {
             onSuccess: () => {
               showSuccessAlert();
@@ -63,7 +90,7 @@ function EditPost() {
     showDeleteConfirm({
       t,
       onConfirm: () => {
-        deleteMutation.mutate(undefined, {
+        deleteMutation.mutate(documentId, {
           onSuccess: () => {
             showSuccessAlert();
             localStorage.removeItem("savedPost");
@@ -76,82 +103,111 @@ function EditPost() {
   };
 
   if (isLoading || !post) {
-    return (
-      <div className={styles.pageContainer}>
-        <div className={styles.loadingContainer}>Loading...</div>
-      </div>
-    );
+    return <div className={styles.loadingContainer}>Loading...</div>;
   }
 
   return (
     <>
-    <Navbar />
-      <div className={styles.pageContainer}>
-        <form
-          onSubmit={editPostHandler}
-          className={styles.contactUs}
-          data-aos="fade-right"
-        >
-          <h2 className={styles.formTitle}>{t("editPosts.editPost")}</h2>
+      <Navbar />
+      <Container maxWidth="md" className={styles.pageContainer}>
+        <Paper elevation={3} className={styles.editorCard} data-aos="fade-up">
+          <Box
+            component="form"
+            onSubmit={editPostHandler}
+            noValidate
+            autoComplete="off"
+          >
+            <Typography variant="h4" className={styles.formTitle}>
+              {t("editPosts.editPost")}
+            </Typography>
 
-          <input
-            type="text"
-            className={styles.input}
-            onChange={(e) => setTitle(e.target.value)}
-            name="title"
-            value={title}
-            placeholder={t("posts.title")}
-          />
+            <Grid container spacing={3}>
+              {/* بخش عنوان - مهمترین بخش */}
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  label={t("posts.title")}
+                  variant="outlined"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  className={styles.inputField}
+                />
+              </Grid>
 
-          <textarea
-            className={styles.textarea}
-            onChange={(e) => setContent(e.target.value)}
-            name="content"
-            value={content}
-            required
-            placeholder={t("editPosts.content")}
-          ></textarea>
+              {/* نویسنده و آدرس عکس در کنار هم */}
+              <Grid item xs={12} md={6}>
+                <TextField
+                  fullWidth
+                  label="Author"
+                  variant="outlined"
+                  value={author}
+                  onChange={(e) => setAuthor(e.target.value)}
+                  className={styles.inputField}
+                />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <TextField
+                  fullWidth
+                  label={t("editPosts.imageURL")}
+                  variant="outlined"
+                  value={url}
+                  onChange={(e) => setUrl(e.target.value)}
+                  className={styles.inputField}
+                />
+              </Grid>
 
-          <input
-            type="url"
-            className={styles.input}
-            onChange={(e) => setUrl(e.target.value)}
-            name="url"
-            value={url}
-            placeholder={t("editPosts.imageURL")}
-          />
-          <input
-            type="text"
-            className={styles.input}
-            onChange={(e) => setWriter(e.target.value)}
-            name="author"
-            value={writer}
-            placeholder="writer"
-          />
+              {/* ویرایشگر متن اصلی */}
+              <Grid item xs={12}>
+                <TextField
+                  label={t("editPosts.content")}
+                  multiline
+                  minRows={10} // ارتفاع مناسب برای نوشتن
+                  variant="outlined"
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
+                  className={styles.contentArea}
+                  placeholder="Start writing your amazing story here..."
+                />
+              </Grid>
+            </Grid>
 
-          <div className={styles.buttonGroup}>
-            <button type="submit" className={styles.button}>
-              ✓ {t("editPosts.edit")}
-            </button>
-
-            <button
-              type="button"
-              onClick={deletePostHandler}
-              className={`${styles.button} ${styles.buttonDelete}`}
+            {/* دکمه‌ها */}
+            <Stack
+              direction={{ xs: "column", sm: "row" }}
+              spacing={2}
+              className={styles.buttonGroup}
             >
-              {t("editPosts.delete")} ✗
-            </button>
+              <Button
+                type="submit"
+                variant="contained"
+                size="large"
+                startIcon={<SaveIcon />}
+                className={styles.saveBtn}
+              >
+                {t("editPosts.edit")}
+              </Button>
 
-            <button
-              type="button"
-              onClick={() => navigate(`/post/${documentId}`)}
-              className={`${styles.button} ${styles.buttonCancel}`}
-            >
-              {t("editPosts.cancel")} ⤺
-            </button>
-          </div>
-        </form>
-      </div>
+              <Button
+                variant="outlined"
+                color="error"
+                startIcon={<DeleteIcon />}
+                onClick={deletePostHandler}
+              >
+                {t("editPosts.delete")}
+              </Button>
+
+              <Button
+                variant="text"
+                color="inherit"
+                startIcon={<CancelIcon />}
+                onClick={() => navigate(`/post/${documentId}`)}
+              >
+                {t("editPosts.cancel")}
+              </Button>
+            </Stack>
+          </Box>
+        </Paper>
+      </Container>
     </>
   );
 }

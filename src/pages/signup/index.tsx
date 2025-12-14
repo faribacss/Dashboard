@@ -30,7 +30,6 @@ import showSuccessAlert from "@/utilities/showSuccessAlert";
 // CSS Module Styles
 import styles from "@/pages/signup/Signup.module.css";
 
-
 // Validation schema builder (pure function, safe to call at module scope)
 export const buildSignUpSchema = (t) =>
   yup.object().shape({
@@ -57,7 +56,7 @@ export const buildSignUpSchema = (t) =>
       ),
   });
 
-function ToSignUp() {
+function SignUpPage() {
   const { t, i18n } = useTranslation();
   const isRtl = i18n?.language?.startsWith("fa");
   // create memoized schema inside the component (valid hook usage)
@@ -285,4 +284,4 @@ function ToSignUp() {
   );
 }
 
-export default ToSignUp;
+export default SignUpPage;

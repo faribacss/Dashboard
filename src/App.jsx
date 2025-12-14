@@ -6,8 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 // components
 import ChangeLang from "@/components/language/ChangeLang";
-import ToLogin from "@/pages/login/index.js";
-import ToSignUp from "@/pages/signup/index.js";
+import LoginPage from "@/pages/login/index.js";
+import SignUpPage from "@/pages/signup/index.js";
 import { PrivateRoute } from "@/pages/panel/PrivateRoute.jsx";
 import Home from "@/pages/home";
 import Panel from "@/pages/panel";
@@ -34,8 +34,8 @@ export default function App() {
             {/* <Navbar /> */}
             <LanguageRoot>
               <Routes>
-                <Route path="/" element={<ToLogin />} />
-                <Route path="/signup" element={<ToSignUp />} />
+                <Route path="/" element={<LoginPage />} />
+                <Route path="/signup" element={<SignUpPage />} />
                 <Route
                   path="/panel"
                   element={
@@ -76,8 +76,7 @@ export default function App() {
                     </PrivateRoute>
                   }
                 />
-                <Route path="/dashboard" element={<Dashboard />} /> // Adding
-                dashboard route
+                <Route path="/dashboard" element={<Dashboard />} />
               </Routes>
               <ToastContainer />
             </LanguageRoot>

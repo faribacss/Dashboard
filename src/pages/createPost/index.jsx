@@ -36,13 +36,13 @@ export default function CreatePost() {
   Aos.init({ duration: 1000 });
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const createPost = CreateOnePost();
+  const { mutate } = CreateOnePost();
   const [formData, setFormData] = useState({
-    // title: "",
+    title: "",
+    author: "",
     content: "",
     url: "",
     modifiedDate: new Date().toISOString(),
-    // author: "",
   });
   const formHandler = (e) => {
     setFormData({
@@ -52,7 +52,7 @@ export default function CreatePost() {
   };
   const addPost = (e) => {
     e.preventDefault();
-    createPost.mutate(formData, {
+    mutate(formData, {
       onSuccess: () => {
         showSuccessAlert(t("alerts.PostCreatedSuccessfully"));
         navigate("/home");
@@ -65,7 +65,7 @@ export default function CreatePost() {
 
   return (
     <>
-    <Navbar />
+      <Navbar />
       <Container maxWidth="md">
         <Box className={styles.createPostPage} data-aos="fade-down">
           <Paper
@@ -128,7 +128,7 @@ export default function CreatePost() {
                     },
                   }}
                 />
-                {/* <Stack direction="row" gap={2}>
+                <Stack direction="row" gap={2}>
                   <TextField
                     id="title"
                     name="title"
@@ -163,7 +163,7 @@ export default function CreatePost() {
                       },
                     }}
                   />
-                </Stack> */}
+                </Stack>
                 <Stack direction="row" gap={1} spacing={2} sx={{ mt: 2 }}>
                   <Button
                     type="submit"

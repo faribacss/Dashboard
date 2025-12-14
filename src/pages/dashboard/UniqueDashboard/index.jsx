@@ -17,7 +17,6 @@ import BorderColorIcon from "@mui/icons-material/BorderColor";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import Stack from "@mui/material/Stack";
-import { PieChart } from "@mui/x-charts/PieChart";
 import { BarChart } from "@mui/x-charts/BarChart";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 
@@ -32,17 +31,18 @@ import TableRow from "@mui/material/TableRow";
 // style
 import styles from "@/pages/dashboard/UniqueDashboard/UniqueDashboard.module.css";
 
-// داده‌های مشترک داشبورد
 import {
   useDashboardData,
   valueFormatter,
   barChartSettings,
-  generateWeeklyData,
+  monthlyBarChartSettings,
 } from "@/hooks/useDashboardData";
 import { DeletePostById } from "@/services/posts";
 import { showDeleteConfirm } from "@/utilities/showEditDeleteToast";
 import getLangProps from "@/utilities/getLangFontClass";
 import CalendarComponent from "@/components/Calendar";
+import { SaveInfoContext } from "@/context/SaveInfo";
+import { useContext } from "react";
 
 // Post Table
 function Row({ post, onDeleteSuccess }) {
@@ -72,13 +72,13 @@ function Row({ post, onDeleteSuccess }) {
       },
     });
   };
-
+  const { user } = useContext(SaveInfoContext);
   return (
     <TableRow className={styles.tableRow} hover onClick={postSelectedHandler}>
       <TableCell component="th" scope="row">
-        {post.content?.substring(0, 50) + "..." || t("dashboard.noTitle")}
+        {post.title?.substring(0, 50) + "..." || t("dashboard.noTitle")}
       </TableCell>
-      <TableCell align="center">{post.createdBy?.username || "-"}</TableCell>
+      <TableCell align="center">{user?.username || "-"}</TableCell>
       <TableCell align="center">{post.author || "-"}</TableCell>
       <TableCell align="center">
         <Tooltip title={t("editPosts.edit")}>
@@ -103,42 +103,59 @@ export default function UniqueVisitorCard() {
   const createPostHandler = () => {
     navigate("/create-post");
   };
-  // استفاده از hook مشترک داده‌ها
-  const { posts, isLoading, error, chartData, statsData, refetch } =
-    useDashboardData();
+
+  const [chartView, setChartView] = React.useState("weekly"); // 'weekly' or 'monthly'
+
+  const {
+    posts,
+    isLoading,
+    error,
+    statsData,
+    refetch,
+    weeklyDataset,
+    monthlyDataset,
+  } = useDashboardData();
 
   const { totalPageviews, publishedPostsCount, uniqueAuthors } = statsData;
+
+  const currentDataset =
+    chartView === "weekly" ? weeklyDataset : monthlyDataset;
+  const currentSettings =
+    chartView === "weekly" ? barChartSettings : monthlyBarChartSettings;
+  const dataKey = chartView === "weekly" ? "week" : "date";
 
   return (
     <Container className={styles.mainContainer}>
       <Box className={styles.statsBox}>
         <Grid className={styles.gridContainer}>
           <Grid className={styles.gridItem}>
-            {t("dashboard.totalPageviews")}
-            <IconButton>
-              <VisibilityIcon className={styles.icon} />
-            </IconButton>
             <div className={styles.statValue}>
+              <p>{t("dashboard.totalPageviews")}</p>
               {isLoading ? "..." : totalPageviews}
+            </div>
+            <div>
+              <IconButton>
+                <VisibilityIcon className={styles.icon} />
+              </IconButton>
             </div>
           </Grid>
           <Grid className={styles.gridItem}>
-            {t("dashboard.publishedPosts")}
+            <div className={styles.statValue}>
+              <p>{t("dashboard.publishedPosts")}</p>
+              {isLoading ? "..." : publishedPostsCount}
+            </div>
             <IconButton>
               <BorderColorIcon className={styles.icon} />
             </IconButton>
-            <div className={styles.statValue}>
-              {isLoading ? "..." : publishedPostsCount}
-            </div>
           </Grid>
           <Grid className={styles.gridItem}>
-            {t("dashboard.activeAuthors")}
+            <div className={styles.statValue}>
+              <p>{t("dashboard.activeAuthors")}</p>
+              {isLoading ? "..." : uniqueAuthors}
+            </div>
             <IconButton>
               <PeopleAltIcon className={styles.icon} />
             </IconButton>
-            <div className={styles.statValue}>
-              {isLoading ? "..." : uniqueAuthors}
-            </div>
           </Grid>
           <Grid
             onClick={createPostHandler}
@@ -154,26 +171,70 @@ export default function UniqueVisitorCard() {
       <Box className={styles.headerBox}>
         <Grid container spacing={2} className={styles.chartContainer}>
           <Box className={styles.barChart}>
-            <h2 className={styles.chartTitle}>{t("dashboard.weeklyChart")}</h2>
+            <Stack
+            className={styles.stackBtn}
+              direction="row"
+              spacing={1}
+              sx={{
+                mb: 2,
+                display: "flex",
+                justifyContent: "flex-end",
+                position: "relative",
+                top: "35px",
+                right: "30%",
+              }}
+            >
+              <Button
+                variant={chartView === "weekly" ? "contained" : "text"}
+                onClick={() => setChartView("weekly")}
+                sx={{
+                  backgroundColor: "#F9A8D4",
+                  color: "black",
+                  opacity: chartView === "weekly" ? 1 : 0.4,
+                  "&:hover": {
+                    backgroundColor: "#F9A8D4",
+                    transition: "all 0.3s ease-in",
+                  },
+                }}
+              >
+                {t("dashboard.weeklyChart")}{" "}
+              </Button>
+              <Button
+                variant={chartView === "monthly" ? "contained" : "text"}
+                onClick={() => setChartView("monthly")}
+                sx={{
+                  backgroundColor: "#ff6a64",
+                  color: "black",
+                  opacity: chartView === "monthly" ? 1 : 0.4,
+                  "&:hover": {
+                    backgroundColor: "#ff6a64",
+                    transition: "all 0.3s ease-in",
+                  },
+                }}
+              >
+                {t("dashboard.monthlyChart")}{" "}
+              </Button>
+            </Stack>
+
             <BarChart
-              dataset={generateWeeklyData(posts)}
-              xAxis={[{ scaleType: "band", dataKey: "week" }]}
+              dataset={currentDataset}
+              xAxis={[{ scaleType: "band", dataKey: dataKey }]}
               series={[
                 {
                   dataKey: "TotalPageviews",
-                  label: "Total Pageviews",
+                  label: t("dashboard.totalPageviews"),
                   valueFormatter,
-                  color: "#6BA3D6",
+                  color: "#FF6A64",
                 },
                 {
                   dataKey: "PublishedPosts",
-                  label: "Published Posts",
+                  label: t("dashboard.publishedPosts"),
                   valueFormatter,
                   color: "#F9A8D4",
                 },
                 {
                   dataKey: "ActiveAuthors",
-                  label: "Active Authors",
+                  label: t("dashboard.activeAuthors"),
                   valueFormatter,
                   color: "#86EFAC",
                 },
@@ -184,94 +245,70 @@ export default function UniqueVisitorCard() {
                   position: { vertical: "bottom", horizontal: "middle" },
                 },
               }}
-              {...barChartSettings}
+              {...currentSettings}
             />
           </Box>
-          <Box className={styles.pieChart}>
-            <h2 className={styles.chartTitle}>{t("dashboard.review")}</h2>
-            <Stack height={400} direction="column" alignItems="center">
-              <PieChart
-                series={[
-                  {
-                    startAngle: -90,
-                    endAngle: 270,
-                    paddingAngle: 3,
-                    innerRadius: "50%",
-                    outerRadius: "85%",
-                    cornerRadius: 5,
-                    cx: "50%",
-                    cy: "45%",
-                    highlightScope: { fade: "global", highlight: "item" },
-                    faded: {
-                      innerRadius: 30,
-                      additionalRadius: -10,
-                      color: "gray",
-                    },
-                    data: chartData,
-                  },
-                ]}
-                slotProps={{
-                  legend: {
-                    direction: "row",
-                    position: { vertical: "bottom", horizontal: "center" },
-                    padding: { top: 20 },
-                  },
-                }}
-              />
-            </Stack>
-          </Box>
+          {/* list of Posts */}
+          <Grid>
+            <div className={styles.listTitleHead}>
+              <h1>Latest Post</h1>
+            </div>
+            <TableContainer
+              className={`${styles.tableContainer} ${fontClass}`}
+              component={Box}
+            >
+              <Table aria-label="posts table">
+                <TableHead className={styles.tableHeaderBox}>
+                  <TableRow className={styles.tableHeader}>
+                    <TableCell>{t("dashboard.postTitle")}</TableCell>
+                    <TableCell align="center">
+                      {t("dashboard.username")}
+                    </TableCell>
+                    <TableCell align="center">
+                      {t("dashboard.author")}
+                    </TableCell>
+                    <TableCell align="center">
+                      {t("dashboard.actions")}
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {isLoading ? (
+                    <TableRow>
+                      <TableCell colSpan={4} align="center">
+                        <CircularProgress />
+                      </TableCell>
+                    </TableRow>
+                  ) : error ? (
+                    <TableRow>
+                      <TableCell colSpan={4} align="center">
+                        {t("dashboard.errorLoading")}
+                      </TableCell>
+                    </TableRow>
+                  ) : posts && posts.length > 0 ? (
+                    posts.map((post) => (
+                      <Row
+                        key={post.id}
+                        post={post}
+                        onDeleteSuccess={refetch}
+                      />
+                    ))
+                  ) : (
+                    <TableRow>
+                      <TableCell colSpan={4} align="center">
+                        {t("dashboard.noPosts")}
+                      </TableCell>
+                    </TableRow>
+                  )}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Grid>
         </Grid>
       </Box>
-      {/* list of Posts */}
-      <Grid container spacing={2} className={styles.upperPostsContainer}>
-        <Grid>
-          <TableContainer
-            className={`${styles.tableContainer} ${fontClass}`}
-            component={Box}
-          >
-            <Table aria-label="posts table">
-              <TableHead className={styles.tableHeaderBox}>
-                <TableRow className={styles.tableHeader}>
-                  <TableCell>{t("dashboard.postTitle")}</TableCell>
-                  <TableCell align="center">
-                    {t("dashboard.username")}
-                  </TableCell>
-                  <TableCell align="center">{t("dashboard.author")}</TableCell>
-                  <TableCell align="center">{t("dashboard.actions")}</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {isLoading ? (
-                  <TableRow>
-                    <TableCell colSpan={4} align="center">
-                      <CircularProgress />
-                    </TableCell>
-                  </TableRow>
-                ) : error ? (
-                  <TableRow>
-                    <TableCell colSpan={4} align="center">
-                      {t("dashboard.errorLoading")}
-                    </TableCell>
-                  </TableRow>
-                ) : posts && posts.length > 0 ? (
-                  posts.map((post) => (
-                    <Row key={post.id} post={post} onDeleteSuccess={refetch} />
-                  ))
-                ) : (
-                  <TableRow>
-                    <TableCell colSpan={4} align="center">
-                      {t("dashboard.noPosts")}
-                    </TableCell>
-                  </TableRow>
-                )}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Grid>
-        <Grid className={styles.calendarGrid}>
-          <CalendarComponent />
-        </Grid>
-      </Grid>
+      {/* <Grid className={styles.calendarGrid}>
+        <CalendarComponent />
+      </Grid> */}
     </Container>
   );
 }

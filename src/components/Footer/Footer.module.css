@@ -23,9 +23,9 @@
 .footer {
   width: 100%;
   margin-top: 80px;
-  background: #172f7050;
-  border-top: 1px solid #cb3cffb4;
-  color: bisque;
+  background: #FFB199;
+  border-top: 1px solid #FFB199;
+  color: #201c1b;
   padding: 25px;
   font-family: "Vazirmatn", "Roboto", sans-serif;
   z-index: 10;
@@ -49,15 +49,16 @@
 }
 
 .logo {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: 2px;
-  color: bisque;
+  color: #201c1bec;
+  text-shadow:-1px 1px 3px #3d2f2a ;
 }
 
 .slogan {
-  font-size: 1.1rem;
-  color: bisque;
+  font-size: 1rem;
+  color: #201c1bbd;
   font-weight: 400;
   margin-top: 0.2rem;
 }
@@ -77,12 +78,11 @@
   border-radius: 50%;
   transition: background 0.2s, color 0.2s, transform 0.2s;
   font-size: 1.7rem;
-  box-shadow: 0 2px 8px 0 rgba(0, 198, 255, 0.08);
 }
 .socialLink:hover {
   transform: translateY(-4px) scale(1.08);
-  box-shadow: 0 0 0 2px var(--icon-hover-color, #0f2027);
-  color: var(--icon-hover-color, #0f2027);
+  box-shadow: 0 0 0 2px var(--icon-hover-color, #201c1b);
+  color: var(--icon-hover-color, #201c1b);
 }
 .icon {
   width: 28px;
@@ -92,7 +92,7 @@
 
 .copyright {
   text-align: center;
-  color: rgba(255, 228, 196, 0.651);
+  color: #201c1b;
   font-size: 0.75rem;
   margin-top: 2rem;
   letter-spacing: 0.5px;

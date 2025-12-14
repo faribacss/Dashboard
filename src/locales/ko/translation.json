@@ -45,7 +45,8 @@
     "publishedPosts": "게시된 글",
     "activeAuthors": "활동 저자",
     "createPost": "글 작성",
-    "weeklyChart": "주간 데이터 막대 차트",
+    "weeklyChart": "주",
+    "monthlyChart": "월",
     "review": "리뷰",
     "postTitle": "글 제목",
     "username": "사용자 이름",
@@ -72,7 +73,8 @@
     "Published": "게시됨",
     "EditedPost": "편집된 게시물",
     "EditPost": "게시물 편집",
-    "BacktoHome": "홈으로 돌아가기"
+    "BacktoHome": "홈으로 돌아가기",
+    "Author":"작가"
   },
   "login": {
     "title": "계정에 로그인하세요!",

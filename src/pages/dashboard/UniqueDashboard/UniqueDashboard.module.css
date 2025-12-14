@@ -21,8 +21,8 @@
 }
 
 .btnPulse {
-  border: 2px solid #cb3cff;
-  box-shadow: 0 0 10px rgba(203, 60, 255, 0.3);
+  border: 2px solid #FFB199;
+  box-shadow: 0 0 10px #FFB199;
   overflow: visible;
 }
 
@@ -31,7 +31,7 @@
   content: "";
   position: absolute;
   inset: -4px;
-  border: 2px solid #cb3cff;
+  border: 2px solid #FFB199;
   border-radius: inherit;
   animation: neonPulse 2s ease-out infinite;
   opacity: 0;
@@ -52,7 +52,7 @@
   }
 }
 .createIcon {
-  color: #060c1d;
+  color: bisque;
   font-size: 25px;
 }
 .statsBox,
@@ -68,28 +68,21 @@
   margin: 30px auto;
 }
 
-.chartContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  width: 100%;
-  margin: 30px auto;
-}
-
 .gridItem {
-  background-color: #0b1739;
-  border: 1px solid #cb3cff6c;
-  color: bisque;
+  background-color: #ffb19957;
+  border: 1px solid #ffb19957;
+  display: flex;
+  justify-content: space-between;
   height: auto;
-  border-radius: 5px;
+  border-radius: 15px;
   font-size: 16px;
   box-sizing: border-box;
-  padding: 10px;
+  padding: 28px 18px;
   text-align: center;
 }
 .gridItem:last-child {
-  background-color: #cb3cff;
-  color: #060c1d;
+  background-color: #fa835f;
+  color: bisque;
   text-align: center;
   display: flex;
   align-items: center;
@@ -100,18 +93,37 @@
   transform: scale(1.1);
   transition: all 0.3s ease-in-out;
 }
+.statValue p{
+  color: #000000b4;
+}
 .statValue {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
-  color: #fff;
+  margin: auto 16px;
+  color: #fa6666;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 }
 
 .icon {
-  color: bisque;
-  font-size: 14px;
+  color: rgba(255, 228, 196, 0.733);
+  font-size: 34px;
+}
+
+/* main section */
+.chartContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+  margin: 30px auto;
 }
 .chartTitle {
-  color: bisque;
+  color: rgba(0, 0, 0, 0.692);
   text-align: center;
   padding: 10px 0 25px 0;
   font-size: 18px;
@@ -119,45 +131,26 @@
   margin-bottom: 20px;
 }
 .barChart {
-  flex: 2;
-  min-width: 60%;
+  min-width: 55%;
   min-height: 400px;
-  background-color: #0b1739;
   padding: 25px;
   border-radius: 15px;
-  border: 1px solid #cb3cff6c;
 }
 .barChart span,
 .barChart tspan,
 .barChart line {
-  fill: bisque !important;
-  color: bisque !important;
+  fill: rgba(0, 0, 0, 0.692) !important;
+  color: black !important;
   font-size: 14px;
-}
-.pieChart span {
-  color: bisque !important;
-  text-align: center;
-  font-size: 14px;
-}
-
-.pieChart {
-  flex: 1;
-  min-width: 300px;
-  min-height: 400px;
-  background-color: #0b1739;
-  padding: 25px;
-  border-radius: 15px;
-  border: 1px solid #cb3cff6c;
-}
-@media screen and (max-width: 900px) {
-  .barChart,
-  .pieChart {
-    flex: 1 1 100%;
-    min-width: 100%;
-  }
 }
 
 /* Table Styles */
+.listTitleHead{
+  background-color: #f8b7b7c5;
+  padding: 10px 15px;
+  border-radius: 25px;
+  text-align: center;
+}
 .tableContainer {
   max-width: 100%;
   margin: 25px auto;
@@ -166,12 +159,12 @@
   overflow-y: auto;
   scroll-behavior: smooth;
   padding: 20px;
-  background: #0b1739;
+  background: #fa6666;
   border-radius: 16px;
-  border: 1px solid #cb3cff6c;
+  border: 1px solid #FFB199;
   box-sizing: border-box;
   scrollbar-width: thin;
-  scrollbar-color: #cb3cff transparent;
+  scrollbar-color: #FFB199 transparent;
 }
 
 .tableContainer table {
@@ -187,8 +180,8 @@
 }
 
 .tableHeader th {
-  background-color: #172f70 !important;
-  color: bisque !important;
+  background-color: #fa835f !important;
+  color: rgb(19, 18, 18) !important;
   font-weight: 600;
   font-size: 14px;
   padding: 14px 16px !important;
@@ -212,13 +205,12 @@
 }
 
 .tableRow:hover {
-  background-color: rgba(203, 60, 255, 0.1) !important;
+  background-color: #ffb1995e !important;
 }
 
 .tableRow td,
 .tableRow th {
-  background-color: rgba(11, 23, 57, 0.6);
-  color: bisque !important;
+  color: rgb(19, 19, 18) !important;
   font-size: 14px;
   padding: 12px 16px !important;
   text-align: center !important;
@@ -256,14 +248,6 @@
 }
 .deleteIcon:hover {
   color: #f0878aa1 !important;
-}
-.upperPostsContainer {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 26px;
 }
 
 /* Persian/RTL Fonts */
