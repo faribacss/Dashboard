@@ -121,51 +121,45 @@ function EditPost() {
               {t("editPosts.editPost")}
             </Typography>
 
-            <Grid container spacing={3}>
-              <Grid item xs={12}>
+            <Grid container className={styles.inputsContainer} spacing={2}>
+              <Grid>
                 <TextField
-                  fullWidth
-                  label={t("posts.title")}
+                  placeholder={t("posts.title")}
                   variant="outlined"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   className={styles.inputField}
                 />
               </Grid>
-
-              <Grid item xs={12} md={6}>
+              <Grid>
                 <TextField
-                  fullWidth
-                  label="Author"
+                  placeholder="Author"
                   variant="outlined"
                   value={author}
                   onChange={(e) => setAuthor(e.target.value)}
                   className={styles.inputField}
                 />
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid>
                 <TextField
-                  fullWidth
-                  label={t("editPosts.imageURL")}
+                  placeholder={t("editPosts.imageURL")}
                   variant="outlined"
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
                   className={styles.inputField}
                 />
               </Grid>
-
-              <Grid item xs={12}>
-                <TextField
-                  label={t("editPosts.content")}
-                  multiline
-                  minRows={10} 
-                  variant="outlined"
-                  value={content}
-                  onChange={(e) => setContent(e.target.value)}
-                  className={styles.contentArea}
-                  placeholder="Start writing your amazing story here..."
-                />
-              </Grid>
+            </Grid>
+            <Grid xs={12}>
+              <TextField
+                multiline
+                minRows={10}
+                variant="outlined"
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                className={styles.contentArea}
+                placeholder="Start writing your amazing story here..."
+              />
             </Grid>
 
             <Stack

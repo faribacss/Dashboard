@@ -63,7 +63,7 @@ function PostId() {
     <>
       <Navbar />
       <div className={styles.postLayout}>
-        <div className={styles.stickySideBar} data-aos="fade-right">
+        <div className={styles.stickySideBar}>
           <img
             src={post.url || errorImg}
             alt="post image"

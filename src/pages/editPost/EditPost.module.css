@@ -28,7 +28,13 @@
   padding-bottom: 10px;
   width: 100%;
 }
-
+.inputsContainer{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
 .inputField :global(.MuiOutlinedInput-root),
 .contentArea :global(.MuiOutlinedInput-root) {
   border-radius: 12px;
@@ -56,6 +62,7 @@
 }
 .contentArea {
   width: 100%;
+  margin-top: 20px;
 }
 
 .buttonGroup {
@@ -85,6 +92,7 @@
   height: 80vh;
   font-family: "Fjalla One", sans-serif;
   font-size: 18pt;
+  font-weight: 800;
   color: #2a293e;
 }
 
@@ -99,5 +107,14 @@
 
   .saveBtn {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .inputsContainer{
+    flex-direction: column;
+  }
+  .inputField{
+    max-width: 100%;
   }
 }
