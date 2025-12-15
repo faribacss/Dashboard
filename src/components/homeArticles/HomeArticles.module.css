@@ -20,8 +20,8 @@ cardBody {
 }
 .cardImg {
   width: 350px;
+  height: 280px;
   margin: 0 auto;
-  height: 210px;
   border-radius: 8px;
   margin-top: 10px;
 }
@@ -74,7 +74,7 @@ cardBody {
 }
 .content {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
