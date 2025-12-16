@@ -14,7 +14,8 @@
     "user": "사용자",
     "settings": "설정",
     "editPost": "게시물 편집",
-    "postDetails": "게시물 세부정보"
+    "postDetails": "게시물 세부정보",
+    "goToDashboard": "홈 / "
   },
   "footer": {
     "BlogPage": "블로그 페이지",
@@ -31,14 +32,15 @@
     "author": "작성자",
     "CreatePost": "게시물 만들기",
     "Cancel": "취소",
-    "description": "모든 게시물이 여기에 있습니다"
+    "description": "여기에서 모든 기사를 읽을 수 있습니다!"
   },
   "panel": {
     "CreateNewPost": "뉴 포스트",
-    "allPostsLabel": "모든 게시물 보기",
-    "allPostsDesc": "모든 게시물이 여기에 있습니다",
     "favorites": "아직 좋아하는 게시물이 없습니다",
     "searchPosts": "게시물 검색..."
+  },
+  "createPost": {
+    "desc": "여기에서 기사를 작성할 수 있습니다!"
   },
   "dashboard": {
     "totalPageviews": "총 페이지뷰",
@@ -74,7 +76,7 @@
     "EditedPost": "편집된 게시물",
     "EditPost": "게시물 편집",
     "BacktoHome": "홈으로 돌아가기",
-    "Author":"작가"
+    "Author": "작가"
   },
   "login": {
     "title": "계정에 로그인하세요!",

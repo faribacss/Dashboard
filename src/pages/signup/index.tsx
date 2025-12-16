@@ -7,6 +7,7 @@ import * as yup from "yup";
 
 // Context
 import { SaveInfoContext } from "@/context/SaveInfo";
+import ChangeLang from "@/components/language/ChangeLang";
 
 // Components
 import {
@@ -123,13 +124,14 @@ function SignUpPage() {
   };
   return (
     <div className={styles.mainContainer}>
+      <ChangeLang />
       <Grid
         container
         spacing={2}
         alignItems="center"
         justifyContent={{ xs: "center", md: "center" }}
       >
-        <Grid item xs={12} md={6} className={styles.container}>
+        <Grid className={styles.container}>
           <Box component="section">
             <Typography
               component="h4"
@@ -145,7 +147,7 @@ function SignUpPage() {
               noValidate
             >
               <Grid container spacing={2} direction="column">
-                <Grid item>
+                <Grid>
                   <TextField
                     required
                     fullWidth
@@ -167,7 +169,7 @@ function SignUpPage() {
                     }}
                   />
                 </Grid>
-                <Grid item>
+                <Grid>
                   <TextField
                     required
                     fullWidth
@@ -220,7 +222,7 @@ function SignUpPage() {
                     }}
                   />
                 </Grid>
-                <Grid item>
+                <Grid>
                   <FormGroup>
                     <FormControlLabel
                       control={
@@ -235,7 +237,7 @@ function SignUpPage() {
                     />
                   </FormGroup>
                 </Grid>
-                <Grid item>
+                <Grid>
                   <Button
                     type="submit"
                     variant="contained"
@@ -258,12 +260,12 @@ function SignUpPage() {
                       : t("signup.button.signup")}
                   </Button>
                 </Grid>
-                {/* <Grid item>
+                {/* <Grid>
               <Typography variant="body2" className="auth-or-text">
                 Or
               </Typography>
             </Grid>
-            <Grid item>
+            <Grid>
               <SocialLoginButtons/>
             </Grid> */}
               </Grid>
@@ -276,7 +278,7 @@ function SignUpPage() {
             </Typography>
           </Box>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid>
           <Box component="div" className="auth-image-box" />
         </Grid>
       </Grid>

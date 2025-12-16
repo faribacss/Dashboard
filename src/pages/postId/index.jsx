@@ -1,7 +1,7 @@
 // library
 import { Link, useParams } from "react-router-dom";
-import Aos from "aos";
 import { useTranslation } from "react-i18next";
+import Aos from "aos";
 
 // services
 import { GetPostById } from "@/services/posts";
@@ -11,6 +11,8 @@ import styles from "@/pages/postId/PostId.module.css";
 
 // image import
 import errorImg from "@/assets/public/img/notFound.png";
+
+// components
 import Navbar from "@/components/Navbar";
 
 function PostId() {

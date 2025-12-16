@@ -67,6 +67,7 @@ export default function CreatePost() {
     <>
       <Navbar />
       <Container maxWidth="md">
+          <h1 className={styles.createPostTitle}>{t("createPost.desc")}</h1>
         <Box className={styles.createPostPage} data-aos="fade-down">
           <Paper
             elevation={6}
@@ -78,7 +79,7 @@ export default function CreatePost() {
             }}
           >
             <Box sx={{ display: "flex", alignItems: "center", mb: 3, gap: 1 }}>
-              <CreateIcon color="primary" fontSize="large" />
+              <CreateIcon fontSize="large" sx={{ color: "#A9C455" }} />
               <Typography
                 variant="h5"
                 component="h1"
@@ -164,35 +165,31 @@ export default function CreatePost() {
                     }}
                   />
                 </Stack>
-                <Stack direction="row" gap={1} spacing={2} sx={{ mt: 2 }}>
+                <Stack className={styles.btnContainer}>
                   <Button
+                    className={styles.createPostButton1}
                     type="submit"
                     variant="contained"
                     size="large"
-                    endIcon={<SendIcon style={{ margin: "0 8px" }} />}
-                    fullWidth
-                    sx={{
-                      borderRadius: 2,
-                      textTransform: "none",
-                      fontWeight: "bold",
-                      boxShadow: "0 4px 12px rgba(25, 118, 210, 0.3)",
-                    }}
+                    endIcon={
+                      <SendIcon
+                        className={styles.createPostButtonIcon}
+                      />
+                    }
                   >
                     {t("posts.CreatePost")}
                   </Button>
                   <Button
+                    className={styles.createPostButton2}
                     type="button"
                     variant="outlined"
-                    color="error"
                     size="large"
-                    endIcon={<CancelIcon style={{ margin: "0 8px" }} />}
+                    endIcon={
+                      <CancelIcon
+                        className={styles.createPostButtonIcon}
+                      />
+                    }
                     onClick={() => navigate("/home")}
-                    fullWidth
-                    sx={{
-                      borderRadius: 2,
-                      textTransform: "none",
-                      fontWeight: "bold",
-                    }}
                   >
                     {t("posts.Cancel")}
                   </Button>

@@ -1,10 +1,16 @@
 .gridContainer {
+  padding-bottom: 50px;
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 20px;
+  gap: 10px;
+  padding: 5px 10px;
+  overflow-x: hidden;
 }
-
+.HeaderTitle{
+  font-size: 28px;
+  font-weight: 600;
+  margin: 45px auto 0 auto;
+}
 .searchBox {
   width: 100%;
   max-width: 500px;
@@ -21,17 +27,17 @@
 }
 
 .searchBox :global(.MuiOutlinedInput-notchedOutline) {
-  border: 2px solid #ff6a64 !important;
+  border: 2px solid #064829 !important;
 }
 
 .searchBox:hover :global(.MuiOutlinedInput-notchedOutline) {
-  border: 2px solid #ff6a64 !important;
+  border: 2px solid #064829 !important;
 }
 
 .searchBox
   :global(.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline) {
-  border: 2px solid #ff6a64 !important;
-  box-shadow: 0 6px 25px rgba(255, 105, 180, 0.25);
+  border: 2px solid #064829 !important;
+  box-shadow: 0 6px 25px #557b38;
 }
 
 .searchBox :global(.MuiInputBase-input) {
@@ -41,17 +47,17 @@
 }
 
 .searchBox :global(.MuiInputBase-input::placeholder) {
-  color: #ff6a64 !important;
+  color: #064829 !important;
   opacity: 0.7;
 }
 
 .searchBox:hover {
-  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.15);
+  box-shadow: 0 6px 20px #557b38;
   transform: translateY(-2px);
 }
 
 .searchBox:focus-within {
-  box-shadow: 0 6px 25px rgba(255, 105, 180, 0.25);
+  box-shadow: 0 6px 25px #557b38;
   transform: translateY(-2px);
 }
 .postsItemsContainer {
@@ -60,14 +66,25 @@
 
 .postsContainer {
   display: flex;
-  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 5px;
+  gap: 2px;
   transition: all 0.3s ease-in-out;
 }
 
 .postItems {
   flex: 0 0 auto;
   transition: all 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 1367px) {
+  .postsContainer {
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 720px) {
+  .HeaderTitle {
+    font-size: 18px;
+  }
 }

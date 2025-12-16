@@ -7,6 +7,7 @@ import * as yup from "yup";
 
 // Context
 import { SaveInfoContext } from "@/context/SaveInfo";
+import ChangeLang from "@/components/language/ChangeLang";
 
 // Components
 import {
@@ -107,136 +108,141 @@ function LoginPage() {
     }
   };
   return (
-    <div className={styles.mainContainer}>
-      <Grid
-        container
-        spacing={2}
-        alignItems="center"
-        justifyContent={{ xs: "center" }}
-      >
-        <Grid className={styles.container}>
-          <Box component="section">
-            <Typography variant="h2" gutterBottom className="auth-title">
-              {t("login.title")}
-            </Typography>
-            <Typography variant="subtitle2" className={styles.subtitle}>
-              {t("login.subtitle")}
-            </Typography>
-            <Box component="form" onSubmit={handleSubmit(handleLogin)}>
-              <Grid container spacing={2} direction="column">
-                <Grid>
-                  <TextField
-                    required
-                    fullWidth
-                    type="email"
-                    {...register("identifier")}
-                    placeholder={t("login.emailLabel")}
-                    className="auth-text-field"
-                    variant="outlined"
-                    color="success"
-                    InputLabelProps={{
-                      style: {
-                        width: "100%",
-                        textAlign: isRtl ? "right" : "left",
-                        direction: isRtl ? "rtl" : "ltr",
-                      },
-                    }}
-                    error={!!errors.identifier}
-                    helperText={errors.identifier?.message}
-                    FormHelperTextProps={{
-                      sx: {
-                        textAlign: isRtl ? "right" : "left",
-                        direction: isRtl ? "rtl" : "ltr",
-                      },
-                    }}
-                  />
-                </Grid>
-                <Grid>
-                  <TextField
-                    required
-                    fullWidth
-                    type={showPassword ? "text" : "password"}
-                    {...register("password")}
-                    placeholder={t("login.passwordLabel")}
-                    InputLabelProps={{
-                      style: {
-                        width: "100%",
-                        textAlign: isRtl ? "right" : "left",
-                        direction: isRtl ? "rtl" : "ltr",
-                      },
-                    }}
-                    FormHelperTextProps={{
-                      sx: {
-                        textAlign: isRtl ? "right" : "left",
-                        direction: isRtl ? "rtl" : "ltr",
-                      },
-                    }}
-                    className="auth-text-field"
-                    variant="outlined"
-                    color="success"
-                    error={!!errors.password}
-                    helperText={errors.password?.message}
-                    InputProps={{
-                      endAdornment: (
-                        <ShowPassword
-                          showPassword={showPassword}
-                          onToggle={() => setShowPassword(!showPassword)}
-                        />
-                      ),
-                      style: { direction: isRtl ? "rtl" : "ltr" },
-                    }}
-                  />
-                </Grid>
-                <Grid>
-                  <FormGroup>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={rememberMe}
-                          onChange={(e) => setRememberMe(e.target.checked)}
-                          color="success"
-                        />
-                      }
-                      label={t("login.remember")}
-                      className={styles.rememberMeLabel}
+    <>
+      <div className={styles.mainContainer}>
+        <ChangeLang />
+        <Grid
+          container
+          spacing={2}
+          alignItems="center"
+          justifyContent={{ xs: "center" }}
+        >
+          <Grid className={styles.container}>
+            <Box component="section">
+              <Typography variant="h2" gutterBottom className="auth-title">
+                {t("login.title")}
+              </Typography>
+              <Typography variant="subtitle2" className={styles.subtitle}>
+                {t("login.subtitle")}
+              </Typography>
+              <Box component="form" onSubmit={handleSubmit(handleLogin)}>
+                <Grid container spacing={2} direction="column">
+                  <Grid>
+                    <TextField
+                      required
+                      fullWidth
+                      type="email"
+                      {...register("identifier")}
+                      placeholder={t("login.emailLabel")}
+                      className="auth-text-field"
+                      variant="outlined"
+                      color="success"
+                      InputLabelProps={{
+                        style: {
+                          width: "100%",
+                          textAlign: isRtl ? "right" : "left",
+                          direction: isRtl ? "rtl" : "ltr",
+                        },
+                      }}
+                      error={!!errors.identifier}
+                      helperText={errors.identifier?.message}
+                      FormHelperTextProps={{
+                        sx: {
+                          textAlign: isRtl ? "right" : "left",
+                          direction: isRtl ? "rtl" : "ltr",
+                        },
+                      }}
                     />
-                  </FormGroup>
+                  </Grid>
+                  <Grid>
+                    <TextField
+                      required
+                      fullWidth
+                      type={showPassword ? "text" : "password"}
+                      {...register("password")}
+                      placeholder={t("login.passwordLabel")}
+                      InputLabelProps={{
+                        style: {
+                          width: "100%",
+                          textAlign: isRtl ? "right" : "left",
+                          direction: isRtl ? "rtl" : "ltr",
+                        },
+                      }}
+                      FormHelperTextProps={{
+                        sx: {
+                          textAlign: isRtl ? "right" : "left",
+                          direction: isRtl ? "rtl" : "ltr",
+                        },
+                      }}
+                      className="auth-text-field"
+                      variant="outlined"
+                      color="success"
+                      error={!!errors.password}
+                      helperText={errors.password?.message}
+                      InputProps={{
+                        endAdornment: (
+                          <ShowPassword
+                            showPassword={showPassword}
+                            onToggle={() => setShowPassword(!showPassword)}
+                          />
+                        ),
+                        style: { direction: isRtl ? "rtl" : "ltr" },
+                      }}
+                    />
+                  </Grid>
+                  <Grid>
+                    <FormGroup>
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            checked={rememberMe}
+                            onChange={(e) => setRememberMe(e.target.checked)}
+                            color="success"
+                          />
+                        }
+                        label={t("login.remember")}
+                        className={styles.rememberMeLabel}
+                      />
+                    </FormGroup>
+                  </Grid>
+                  <Grid>
+                    <Button
+                      onClick={handleSubmit(handleLogin)}
+                      type="submit"
+                      variant="contained"
+                      disabled={isSubmitting || isSuccess || !allFilled}
+                      fullWidth
+                      className={`auth-button-base ${
+                        isSuccess
+                          ? "auth-success-button"
+                          : "auth-primary-button"
+                      }`}
+                    >
+                      {isSuccess
+                        ? t("login.button.success")
+                        : isSubmitting
+                        ? t("login.button.signing")
+                        : t("login.button.login")}
+                    </Button>
+                  </Grid>
+                  <Grid>
+                    <Typography className="auth-bottom-text">
+                      {t("login.noAccount")}{" "}
+                      <Link to="/signup" className="auth-link">
+                        {t("login.signup")}
+                      </Link>
+                    </Typography>
+                  </Grid>
                 </Grid>
-                <Grid>
-                  <Button
-                    onClick={handleSubmit(handleLogin)}
-                    type="submit"
-                    variant="contained"
-                    disabled={isSubmitting || isSuccess || !allFilled}
-                    fullWidth
-                    className={`auth-button-base ${
-                      isSuccess ? "auth-success-button" : "auth-primary-button"
-                    }`}
-                  >
-                    {isSuccess
-                      ? t("login.button.success")
-                      : isSubmitting
-                      ? t("login.button.signing")
-                      : t("login.button.login")}
-                  </Button>
-                </Grid>
-                <Grid>
-                  <Typography className="auth-bottom-text">
-                    {t("login.noAccount")}{" "}
-                    <Link to="/signup" className="auth-link">
-                      {t("login.signup")}
-                    </Link>
-                  </Typography>
-                </Grid>
-              </Grid>
+              </Box>
             </Box>
-          </Box>
+          </Grid>
+          <Grid>
+            <div className="auth-image-box"></div>
+          </Grid>
         </Grid>
-        <Grid>
-          <div className="auth-image-box"></div>
-        </Grid>
-      </Grid>
-    </div>
+      </div>
+    </>
   );
 }
 export default LoginPage;

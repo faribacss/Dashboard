@@ -8,3 +8,24 @@
   flex: 1;
   width: 100%;
 }
+
+.progress{
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 5px;
+  background-color: #879937;
+  width: 100%;
+  animation: scroll-animation 1s linear;
+  animation-timeline: scroll(root y);
+  z-index: 3000;
+}
+
+@keyframes scroll-animation {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}

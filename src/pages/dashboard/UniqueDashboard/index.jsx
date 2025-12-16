@@ -1,7 +1,10 @@
+// library
+import * as React from "react";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
+import { useContext } from "react";
 
-// material-ui
+// MUI components
 import {
   CircularProgress,
   IconButton,
@@ -19,8 +22,6 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import Stack from "@mui/material/Stack";
 import { BarChart } from "@mui/x-charts/BarChart";
 import PostAddIcon from "@mui/icons-material/PostAdd";
-
-import * as React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -31,6 +32,7 @@ import TableRow from "@mui/material/TableRow";
 // style
 import styles from "@/pages/dashboard/UniqueDashboard/UniqueDashboard.module.css";
 
+// hooks and services
 import {
   useDashboardData,
   valueFormatter,
@@ -38,14 +40,21 @@ import {
   monthlyBarChartSettings,
 } from "@/hooks/useDashboardData";
 import { DeletePostById } from "@/services/posts";
+
+// utilities
 import { showDeleteConfirm } from "@/utilities/showEditDeleteToast";
 import getLangProps from "@/utilities/getLangFontClass";
-import CalendarComponent from "@/components/Calendar";
+
+// components
+// import CalendarComponent from "@/components/Calendar";
+
+// context
 import { SaveInfoContext } from "@/context/SaveInfo";
-import { useContext } from "react";
+import showSuccessAlert from "@/utilities/showSuccessAlert";
+import showErrorAlert from "@/utilities/showErrorAlert";
 
 // Post Table
-function Row({ post, onDeleteSuccess }) {
+function Row({ post }) {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const deletePostMutation = DeletePostById(post.documentId);
@@ -64,16 +73,20 @@ function Row({ post, onDeleteSuccess }) {
     showDeleteConfirm({
       t,
       onConfirm: () => {
-        deletePostMutation.mutate(undefined, {
+        deletePostMutation.mutate(post.documentId, {
           onSuccess: () => {
-            if (onDeleteSuccess) onDeleteSuccess();
+            showSuccessAlert();
+            localStorage.removeItem("savedPost");
+            navigate("/panel");
           },
+          onError: showErrorAlert,
         });
       },
     });
   };
   const { user } = useContext(SaveInfoContext);
   return (
+    // List of Posts
     <TableRow className={styles.tableRow} hover onClick={postSelectedHandler}>
       <TableCell component="th" scope="row">
         {post.title?.substring(0, 50) + "..." || t("dashboard.noTitle")}
@@ -96,15 +109,18 @@ function Row({ post, onDeleteSuccess }) {
   );
 }
 
-export default function UniqueVisitorCard() {
+export default function UniqueVisitorCard({ isRtl }) {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { fontClass } = getLangProps(styles);
   const createPostHandler = () => {
     navigate("/create-post");
   };
+  const positionStyle = isRtl
+    ? { right: "0px", left: "unset" }
+    : { left: "0px", right: "unset" };
 
-  const [chartView, setChartView] = React.useState("weekly"); // 'weekly' or 'monthly'
+  const [chartView, setChartView] = React.useState("weekly"); // weekly or monthly
 
   const {
     posts,
@@ -116,7 +132,7 @@ export default function UniqueVisitorCard() {
     monthlyDataset,
   } = useDashboardData();
 
-  const { totalPageviews, publishedPostsCount, uniqueAuthors } = statsData;
+  const { totalPageviews, publishedPostsCount, ActiveAuthors } = statsData;
 
   const currentDataset =
     chartView === "weekly" ? weeklyDataset : monthlyDataset;
@@ -151,7 +167,7 @@ export default function UniqueVisitorCard() {
           <Grid className={styles.gridItem}>
             <div className={styles.statValue}>
               <p>{t("dashboard.activeAuthors")}</p>
-              {isLoading ? "..." : uniqueAuthors}
+              {isLoading ? "..." : ActiveAuthors}
             </div>
             <IconButton>
               <PeopleAltIcon className={styles.icon} />
@@ -172,27 +188,28 @@ export default function UniqueVisitorCard() {
         <Grid container spacing={2} className={styles.chartContainer}>
           <Box className={styles.barChart}>
             <Stack
-            className={styles.stackBtn}
+              className={styles.stackBtn}
               direction="row"
               spacing={1}
               sx={{
                 mb: 2,
                 display: "flex",
-                justifyContent: "flex-end",
+                justifyContent: "center",
+                gap: 1,
                 position: "relative",
-                top: "35px",
-                right: "30%",
+                top: "-1px",
+                ...positionStyle,
               }}
             >
               <Button
                 variant={chartView === "weekly" ? "contained" : "text"}
                 onClick={() => setChartView("weekly")}
                 sx={{
-                  backgroundColor: "#F9A8D4",
-                  color: "black",
+                  backgroundColor: "#263238",
+                  color: "#E8CC93",
                   opacity: chartView === "weekly" ? 1 : 0.4,
                   "&:hover": {
-                    backgroundColor: "#F9A8D4",
+                    backgroundColor: "#263238",
                     transition: "all 0.3s ease-in",
                   },
                 }}
@@ -203,11 +220,11 @@ export default function UniqueVisitorCard() {
                 variant={chartView === "monthly" ? "contained" : "text"}
                 onClick={() => setChartView("monthly")}
                 sx={{
-                  backgroundColor: "#ff6a64",
-                  color: "black",
+                  backgroundColor: "#263238",
+                  color: "#E8CC93",
                   opacity: chartView === "monthly" ? 1 : 0.4,
                   "&:hover": {
-                    backgroundColor: "#ff6a64",
+                    backgroundColor: "#263238",
                     transition: "all 0.3s ease-in",
                   },
                 }}
@@ -218,25 +235,26 @@ export default function UniqueVisitorCard() {
 
             <BarChart
               dataset={currentDataset}
+              direction={isRtl ? "rtl" : "ltr"}
               xAxis={[{ scaleType: "band", dataKey: dataKey }]}
               series={[
                 {
                   dataKey: "TotalPageviews",
                   label: t("dashboard.totalPageviews"),
                   valueFormatter,
-                  color: "#FF6A64",
+                  color: "#0a411e",
                 },
                 {
                   dataKey: "PublishedPosts",
                   label: t("dashboard.publishedPosts"),
                   valueFormatter,
-                  color: "#F9A8D4",
+                  color: "#4a5568",
                 },
                 {
                   dataKey: "ActiveAuthors",
                   label: t("dashboard.activeAuthors"),
                   valueFormatter,
-                  color: "#86EFAC",
+                  color: "#A9C455",
                 },
               ]}
               slotProps={{

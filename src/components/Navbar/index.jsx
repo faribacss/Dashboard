@@ -17,6 +17,8 @@ import { MobileDrawer, DrawerHeader } from "./MobileDrawer";
 import { DesktopDrawer } from "./DesktopDrawer";
 import { DrawerContent } from "./DrawerContent";
 
+
+
 const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -43,9 +45,7 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   })
 );
 
-// تعیین عنوان بر اساس مسیر فعلی
 const getActiveTitle = (pathname) => {
-  // مسیرهای ثابت
   const staticRoutes = {
     "/home": "navbar.allPosts",
     "/panel": "navbar.userPanel",
@@ -57,7 +57,7 @@ const getActiveTitle = (pathname) => {
     "/users": "navbar.users",
     "/logout": "navbar.logout",
   };
-  // بررسی مسیرهای ثابت
+    // بررسی مسیرهای ثابت
   if (staticRoutes[pathname]) {
     return staticRoutes[pathname];
   }
@@ -87,30 +87,32 @@ export default function Navbar() {
   const handleDrawerClose = () => setMobileOpen(false);
 
   return (
-    <Box sx={{ display: "flex"}}>
-      <CssBaseline />
+    <>
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
 
-      {isMobile ? (
-        <>
-          <MobileAppBar onMenuClick={handleDrawerToggle} />
-          <MobileDrawer
-            open={mobileOpen}
-            onClose={handleDrawerClose}
-            isRtl={isRtl}
-          >
-            <DrawerContent
-              activeTitle={activeTitle}
-              onItemClick={handleDrawerClose}
-            />
-          </MobileDrawer>
-        </>
-      ) : (
-        <DesktopDrawer isRtl={isRtl}>
-          <DrawerContent activeTitle={activeTitle} />
-        </DesktopDrawer>
-      )}
+        {isMobile ? (
+          <>
+            <MobileAppBar onMenuClick={handleDrawerToggle} />
+            <MobileDrawer
+              open={mobileOpen}
+              onClose={handleDrawerClose}
+              isRtl={isRtl}
+            >
+              <DrawerContent
+                activeTitle={activeTitle}
+                onItemClick={handleDrawerClose}
+              />
+            </MobileDrawer>
+          </>
+        ) : (
+          <DesktopDrawer isRtl={isRtl}>
+            <DrawerContent activeTitle={activeTitle} />
+          </DesktopDrawer>
+        )}
 
-      <Main open={!isMobile}>{isMobile && <DrawerHeader />}</Main>
-    </Box>
+        <Main open={!isMobile}>{isMobile && <DrawerHeader />}</Main>
+      </Box>
+    </>
   );
 }

@@ -59,10 +59,12 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  scrollbar-width: none;
+  scrollbar-width: thin;
+  scrollbar-color: #064829 transparent;
 }
 body {
   background-color: #d9d9d9;
+  overflow-x: hidden;
 }
 /* Custom alert Font */
 .custom-swal {

@@ -14,7 +14,8 @@
     "user": "User",
     "settings": "Settings",
     "editPost": "Edit Post",
-    "postDetails": "Post Details"
+    "postDetails": "Post Details",
+    "goToDashboard": "Home / "
   },
   "footer": {
     "BlogPage": "Blog Page",
@@ -31,7 +32,7 @@
     "author": "Author",
     "CreatePost": "Create Post",
     "Cancel": "Cancel",
-    "description": "All Posts are here"
+    "description": "You Can Read All Articles Here!"
   },
   "editPosts": {
     "editPost": "Edit Post",
@@ -46,6 +47,9 @@
     "confirmDelete": "Are you sure you want to delete the post?",
     "noDelete": "No, don't delete"
   },
+  "createPost": {
+    "desc": "You Can Write Your Article Here!"
+  },
   "postId": {
     "Published": "Published",
     "EditedPost": "Edited Post",
@@ -55,8 +59,6 @@
   },
   "panel": {
     "CreateNewPost": "Create New Post",
-    "allPostsLabel": "See All Posts",
-    "allPostsDesc": "All Posts are here",
     "favorites": "There is no favorite post yet",
     "searchPosts": "Search posts..."
   },

@@ -22,13 +22,11 @@
 
 .footer {
   width: 100%;
-  margin-top: 80px;
-  background: #FFB199;
-  border-top: 1px solid #FFB199;
-  color: #201c1b;
-  padding: 25px;
+  background: linear-gradient(to right, #064829, #889B4A);
+  color: #CBD5E0;
+  padding: 15px;
   font-family: "Vazirmatn", "Roboto", sans-serif;
-  z-index: 10;
+  z-index: 4000;
 }
 
 .container {
@@ -52,13 +50,13 @@
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: 2px;
-  color: #201c1bec;
+  color: #CBD5E0;
   text-shadow:-1px 1px 3px #3d2f2a ;
 }
 
 .slogan {
   font-size: 1rem;
-  color: #201c1bbd;
+  color: #CBD5E0;
   font-weight: 400;
   margin-top: 0.2rem;
 }
@@ -81,8 +79,8 @@
 }
 .socialLink:hover {
   transform: translateY(-4px) scale(1.08);
-  box-shadow: 0 0 0 2px var(--icon-hover-color, #201c1b);
-  color: var(--icon-hover-color, #201c1b);
+  box-shadow: 0 0 0 2px var(--icon-hover-color, #CBD5E0);
+  color: var(--icon-hover-color, #CBD5E0);
 }
 .icon {
   width: 28px;
@@ -92,7 +90,7 @@
 
 .copyright {
   text-align: center;
-  color: #201c1b;
+  color: #CBD5E0;
   font-size: 0.75rem;
   margin-top: 2rem;
   letter-spacing: 0.5px;

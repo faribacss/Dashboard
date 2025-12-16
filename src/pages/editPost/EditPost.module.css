@@ -23,7 +23,7 @@
   text-align: center;
   margin-bottom: 40px !important;
   letter-spacing: 1px;
-  border-bottom: 2px solid #ff6b6b;
+  border-bottom: 2px solid #557B38;
   display: inline-block;
   padding-bottom: 10px;
   width: 100%;
@@ -80,9 +80,9 @@
 }
 
 .saveBtn:hover {
-  background-color: #ff6b6b !important;
+  background-color: #557B38 !important;
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+  box-shadow: 0 5px 15px rgba(85, 123, 56, 0.4);
 }
 
 .loadingContainer {

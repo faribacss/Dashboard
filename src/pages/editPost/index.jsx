@@ -17,7 +17,11 @@ import styles from "@/pages/editPost/EditPost.module.css";
 
 // services
 import { GetPostById, EditPostById, DeletePostById } from "@/services/posts";
+
+// components
 import Navbar from "@/components/Navbar";
+
+// MUI components
 import {
   Container,
   Grid,
@@ -28,6 +32,8 @@ import {
   Stack,
   Box,
 } from "@mui/material";
+
+// MUI icons
 import SaveIcon from "@mui/icons-material/Save";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CancelIcon from "@mui/icons-material/Cancel";
@@ -150,7 +156,7 @@ function EditPost() {
                 />
               </Grid>
             </Grid>
-            <Grid xs={12}>
+            <Grid>
               <TextField
                 multiline
                 minRows={10}
@@ -164,14 +170,14 @@ function EditPost() {
 
             <Stack
               direction={{ xs: "column", sm: "row" }}
-              spacing={2}
+              gap={1}
               className={styles.buttonGroup}
             >
               <Button
                 type="submit"
                 variant="contained"
                 size="large"
-                startIcon={<SaveIcon />}
+                startIcon={<SaveIcon sx={{ margin: "0 7px" }} />}
                 className={styles.saveBtn}
               >
                 {t("editPosts.edit")}
@@ -180,7 +186,7 @@ function EditPost() {
               <Button
                 variant="outlined"
                 color="error"
-                startIcon={<DeleteIcon />}
+                startIcon={<DeleteIcon sx={{ margin: "0 7px" }} />}
                 onClick={deletePostHandler}
               >
                 {t("editPosts.delete")}
@@ -189,7 +195,7 @@ function EditPost() {
               <Button
                 variant="text"
                 color="inherit"
-                startIcon={<CancelIcon />}
+                startIcon={<CancelIcon sx={{ margin: "0 7px" }} />}
                 onClick={() => navigate(`/post/${documentId}`)}
               >
                 {t("editPosts.cancel")}

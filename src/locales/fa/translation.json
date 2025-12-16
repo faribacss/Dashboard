@@ -14,7 +14,8 @@
     "user": "کاربر",
     "settings": "تنظیمات",
     "editPost": "ویرایش پست",
-    "postDetails": "جزئیات پست"
+    "postDetails": "جزئیات پست",
+    "goToDashboard": "خانه / "
   },
   "footer": {
     "BlogPage": "صفحه وبلاگ",
@@ -31,14 +32,15 @@
     "author": "نویسنده",
     "CreatePost": "ایجاد پست",
     "Cancel": "لغو",
-    "description": "تمام پست‌ها اینجا هستند"
+    "description": "شما می‌توانید تمام مقالات را اینجا بخوانید!"
   },
   "panel": {
     "CreateNewPost": "ایجاد پست جدید",
-    "allPostsLabel": "مشاهده تمام پست‌ها",
-    "allPostsDesc": "تمام پست‌ها اینجا هستند",
     "favorites": "هنوز پست مورد علاقه‌ای وجود ندارد",
     "searchPosts": "جستجوی پست‌ها..."
+  },
+  "createPost": {
+    "desc": "شما می‌توانید مقاله خود را اینجا بنویسید!"
   },
   "dashboard": {
     "totalPageviews": "کل بازدیدها",

@@ -71,8 +71,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #FFB199;
-  color: #302e2e;
+  background: #557B38;
+  color: #CBD5E0;
   font-size: 28px;
   font-weight: bold;
 }
@@ -138,7 +138,7 @@
   margin-bottom: 20px;
   background: #fff;
   padding: 10px 15px;
-  border-left: 5px solid #FF6A64;
+  border-left: 5px solid #152711;
 }
 
 /* ------------------- Buttons ------------------- */
@@ -153,8 +153,8 @@
 .btn {
   width: 100%;
   padding: 10px;
-  background: #FFB199;
-  color: #302f2f;
+  background: #557B38;
+  color: #CBD5E0;
   border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
@@ -167,6 +167,7 @@
 
 .btn:hover {
   background: #fff;
+  color: #222;
   border: 3px solid #152711;
   box-shadow: none;
   transform: translate(2px, 2px);

@@ -18,7 +18,6 @@ import {
   Checkbox,
   Container,
   Divider,
-  Grid,
   Typography,
 } from "@mui/material";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
@@ -42,11 +41,26 @@ function HomeArticles({
   const { fontClass: langFontClass } = getLangProps(styles);
   Aos.init({ duration: 1000 });
   const { user } = useContext(SaveInfoContext);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRtl = i18n.dir() === "rtl";
+
+  const alignStyle = isRtl
+    ? {
+        borderLeft: "8px solid #3d4347",
+        borderRight: "1px solid #3d4347",
+        borderTop: "2px solid #3d4347",
+        borderBottom: "2px solid #3d4347",
+      }
+    : {
+        borderRight: "8px solid #3d4347",
+        borderLeft: "1px solid #3d4347",
+        borderTop: "2px solid #3d4347",
+        borderBottom: "2px solid #3d4347",
+      };
 
   return (
     <Container key={id} className={`${styles.card} ${langFontClass}`}>
-      <Box className={styles.cardBody}>
+      <Box className={styles.cardBody} sx={{ ...alignStyle }}>
         <Box
           sx={{
             display: "flex",
@@ -94,7 +108,7 @@ function HomeArticles({
           >
             <Box>
               <Typography sx={{ fontFamily: "revert-layer", fontSize: "16px" }}>
-                Author: {author}
+                {t("posts.author")}: {author}
               </Typography>
               <Typography
                 variant="subtitle1"
@@ -119,7 +133,7 @@ function HomeArticles({
           to={`/post/${documentId}`}
           sx={{
             mb: 1,
-            color: "#FF6A64",
+            color: "#064829",
             textAlign: "left",
           }}
         >

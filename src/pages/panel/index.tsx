@@ -9,7 +9,7 @@ export default function Panel() {
   return (
     <>
     <Navbar />
-      <Box>
+      <Box sx={{margin: "20px"}}>
         <Grid>
           <Dashboard />
         </Grid>

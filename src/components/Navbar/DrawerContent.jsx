@@ -10,22 +10,15 @@ import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import IconButton from "@mui/material/IconButton";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Typography,
-} from "@mui/material";
+import { Typography } from "@mui/material";
 
 // MUI Icons
 import HomeFilledIcon from "@mui/icons-material/HomeFilled";
 import SettingsIcon from "@mui/icons-material/Settings";
 import PostAddIcon from "@mui/icons-material/PostAdd";
-import BarChartIcon from "@mui/icons-material/BarChart";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import GroupIcon from "@mui/icons-material/Group";
 import BallotIcon from "@mui/icons-material/Ballot";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PersonIcon from "@mui/icons-material/Person";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
@@ -35,11 +28,14 @@ import styles from "@/components/Navbar/Navbar.module.css";
 
 // Context
 import { SaveInfoContext } from "@/context/SaveInfo";
+import { useLocation } from "react-router";
+import ChangeLang from "@/components/language/ChangeLang";
 
 export function DrawerContent({ activeTitle, onItemClick }) {
   const { t } = useTranslation();
   const { user, logout } = useContext(SaveInfoContext);
-
+   const { pathname } = useLocation();
+  const isDashboard = pathname === "/panel";
   const handleLogout = () => {
     if (onItemClick) onItemClick();
     logout();
@@ -52,133 +48,79 @@ export function DrawerContent({ activeTitle, onItemClick }) {
           {t("navbar.hello", { name: user.username })}
         </Typography>
         <div>
-          <Typography className={styles.subtitle} variant="subtitle1">
+          <Typography
+            sx={{ color: "#2D3748", fontSize: "13px", fontWeight: "bold" }}
+          >
+            {!isDashboard && (
+              <>
+                <NavLink
+                  to="/panel"
+                  onClick={onItemClick}
+                  style={{ textDecoration: "none", color: "#E1C6A8" }}
+                >
+                  {t("navbar.goToDashboard")}
+                </NavLink>
+              </>
+            )}
             {t(activeTitle)}
-          </Typography>
-          <Typography sx={{ color: "#795f57", fontSize: "13px" }}>
-            <NavLink to="/panel">Home</NavLink> / {t(activeTitle)}
           </Typography>
         </div>
       </Box>
-      <Divider sx={{ bordercolor: " rgb(29, 24, 22)" }} />
+      <Divider sx={{ bordercolor: " #E1C6A8" }} />
       <List>
-        <ListItem sx={{ color: " rgb(29, 24, 22)" }}>
+        <ListItem sx={{ color: " #E1C6A8" }}>
+          <NavLink to="/panel" onClick={onItemClick}>
+            <IconButton>
+              <HomeFilledIcon sx={{ color: " #E1C6A8" }} />
+            </IconButton>
+            {t("navbar.userPanel")}
+          </NavLink>
+        </ListItem>
+        <ListItem sx={{ color: " #E1C6A8" }}>
           <NavLink to="/home" onClick={onItemClick}>
             <IconButton>
-              <AutoStoriesIcon sx={{ color: " rgb(29, 24, 22)" }} />
+              <AutoStoriesIcon sx={{ color: " #E1C6A8" }} />
             </IconButton>
             {t("navbar.allPosts")}
           </NavLink>
         </ListItem>
-        <Accordion
-          disableGutters
-          elevation={0}
-          sx={{
-            backgroundColor: "transparent",
-            boxShadow: "none",
-            "&:before": { display: "none" },
-            width: "100%",
-            margin: 0,
-          }}
-        >
-          <AccordionSummary
-            expandIcon={
-              <ArrowDropDownIcon sx={{ color: " rgb(29, 24, 22)" }} />
-            }
-            aria-controls="panel-content"
-            id="panel-header"
-            sx={{
-              padding: "0 16px",
-              minHeight: "48px",
-              color: " rgb(29, 24, 22)",
-              "& .MuiAccordionSummary-content": {
-                margin: 0,
-                display: "flex",
-                alignItems: "center",
-              },
-            }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                padding: "8px",
-                color: " rgb(29, 24, 22)",
-              }}
-            >
-              <BarChartIcon sx={{ color: " rgb(29, 24, 22)" }} />
-            </Box>
-            {t("navbar.userPanel")}
-          </AccordionSummary>
-          <AccordionDetails
-            sx={{ padding: 0, paddingLeft: 2, color: " rgb(29, 24, 22)" }}
-          >
-            <List sx={{ padding: 0 }}>
-              <ListItem
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  padding: "10px 16px",
-                }}
-              >
-                <NavLink to="/panel" onClick={onItemClick}>
-                  <Box
-                    component="span"
-                    sx={{ padding: "8px", color: " rgb(29, 24, 22)" }}
-                  >
-                    <HomeFilledIcon sx={{ color: " rgb(29, 24, 22)" }} />
-                  </Box>
-                  {t("navbar.home")}
-                </NavLink>
-              </ListItem>
-              <ListItem
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  padding: "10px 16px",
-                }}
-              >
-                <NavLink to="/create-post" onClick={onItemClick}>
-                  <Box
-                    component="span"
-                    sx={{ padding: "8px", color: " rgb(29, 24, 22)" }}
-                  >
-                    <PostAddIcon sx={{ color: " rgb(29, 24, 22)" }} />
-                  </Box>
-                  {t("navbar.createNewPost")}
-                </NavLink>
-              </ListItem>
-            </List>
-          </AccordionDetails>
-        </Accordion>
-        <ListItem sx={{ color: " rgb(29, 24, 22)" }}>
+        <ListItem sx={{ color: " #E1C6A8" }}>
+          <NavLink to="/create-post" onClick={onItemClick}>
+            <IconButton>
+              <PostAddIcon sx={{ color: " #E1C6A8" }} />
+            </IconButton>
+            {t("navbar.createNewPost")}
+          </NavLink>
+        </ListItem>
+
+        <ListItem sx={{ color: " #E1C6A8" }}>
           <NavLink onClick={onItemClick}>
             <IconButton>
-              <BallotIcon sx={{ color: " rgb(29, 24, 22)" }} />
+              <BallotIcon sx={{ color: " #E1C6A8" }} />
             </IconButton>
             {t("navbar.projects")}
           </NavLink>
         </ListItem>
-        <ListItem sx={{ color: " rgb(29, 24, 22)" }}>
+        <ListItem sx={{ color: " #E1C6A8" }}>
           <NavLink onClick={onItemClick}>
             <IconButton>
-              <GroupIcon sx={{ color: " rgb(29, 24, 22)" }} />
+              <GroupIcon sx={{ color: " #E1C6A8" }} />
             </IconButton>
             {t("navbar.team")}
           </NavLink>
         </ListItem>
-        <ListItem sx={{ color: " rgb(29, 24, 22)" }}>
+        <ListItem sx={{ color: " #E1C6A8" }}>
           <NavLink onClick={onItemClick}>
             <IconButton>
-              <TrendingUpIcon sx={{ color: " rgb(29, 24, 22)" }} />
+              <TrendingUpIcon sx={{ color: " #E1C6A8" }} />
             </IconButton>
             {t("navbar.reports")}
           </NavLink>
         </ListItem>
-        <ListItem sx={{ color: " rgb(29, 24, 22)" }}>
+        <ListItem sx={{ color: " #E1C6A8" }}>
           <NavLink onClick={onItemClick}>
             <IconButton>
-              <PersonIcon sx={{ color: " rgb(29, 24, 22)" }} />
+              <PersonIcon sx={{ color: " #E1C6A8" }} />
             </IconButton>
             {t("navbar.user")}
           </NavLink>
@@ -186,23 +128,28 @@ export function DrawerContent({ activeTitle, onItemClick }) {
       </List>
       <Divider sx={{ borderColor: "bisque" }} />
       <List>
-        <ListItem sx={{ color: " rgb(29, 24, 22)" }}>
+        <ListItem sx={{ color: " #E1C6A8" }}>
           <NavLink onClick={onItemClick}>
             <IconButton>
-              <SettingsIcon sx={{ color: " rgb(29, 24, 22)" }} />
+              <SettingsIcon sx={{ color: " #E1C6A8" }} />
             </IconButton>
             {t("navbar.settings")}
           </NavLink>
         </ListItem>
-        <ListItem sx={{ color: " rgb(29, 24, 22)" }}>
+        <ListItem sx={{ color: " #E1C6A8" }}>
           <NavLink to="/" onClick={handleLogout}>
             <IconButton>
-              <LogoutIcon sx={{ color: " rgb(29, 24, 22)" }} />
+              <LogoutIcon sx={{ color: " #E1C6A8" }} />
             </IconButton>
             {t("navbar.logout")}
           </NavLink>
         </ListItem>
       </List>
+        <List>
+          <ListItem>
+            <ChangeLang />
+          </ListItem>
+        </List>
     </Box>
   );
 }

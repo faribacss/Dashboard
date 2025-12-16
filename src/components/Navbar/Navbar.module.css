@@ -24,11 +24,12 @@
 }
 
 .navbarAppBar {
-  background: linear-gradient(to right, #ff6a64, #ffb199);
+  background: linear-gradient(to right, #064829, #889B4A);
   z-index: 999 !important;
   width: 100% !important;
   position: fixed !important;
-  margin: 15px auto;
+  margin: 5px auto;
+  padding: 10px 0 !important;
   display: flex !important;
   align-items: center !important;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -38,21 +39,19 @@
   color: bisque !important;
 }
 .navbarMenuIcon {
-  background-color: rgba(196, 210, 255, 0.452) !important;
+  background-color: #889B4A !important;
+  color: black;
 }
 
-.subtitle {
-  color: rgba(29, 24, 22, 0.644);
-}
 .helloText {
-  background-color: #f5825f !important;
-  color: rgb(29, 24, 22);
+  background-color: #064829 !important;
+  color:#E1C6A8;
   font-size: 18px;
   font-weight: 700;
   border-radius: 15px;
   padding: 8px 15px;
   margin: 15px 5px;
-  border: 1px solid #f5825f;
+  border: 1px solid #064829;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   transition: all 0.3s ease-in;
 }
