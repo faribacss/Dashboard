@@ -54,13 +54,19 @@ const socialLinks = [
 export default function Footer() {
   const { jwt } = useContext(SaveInfoContext) || {};
   const { fontClass: langFontClass } = getLangProps(styles);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRtl = i18n.dir() === "rtl";
+
   return (
     <>
       {jwt ? (
         <>
           <footer className={styles.footer}>
-            <div className={`${styles.container} ${langFontClass}`}>
+            <div
+              className={`${styles.container} ${langFontClass} ${
+                isRtl ? styles.rtl : ""
+              }`}
+            >
               <div className={styles.brand}>
                 <span className={styles.logo}>{t("footer.BlogPage")}</span>
                 <span className={styles.slogan}>{t("footer.description")}</span>
