@@ -41,7 +41,6 @@
 .brand {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   gap: 0.5rem;
 }
 
@@ -124,4 +123,14 @@
   .slogan{
     font-size: 14px;
   }
+}
+
+
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl .brand {
+  align-items: flex-start; 
 }
