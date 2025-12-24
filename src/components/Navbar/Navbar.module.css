@@ -24,7 +24,7 @@
 }
 
 .navbarAppBar {
-  background: linear-gradient(to right, #064829, #889B4A);
+  background: linear-gradient(to right, #889B4A, #064829);
   z-index: 999 !important;
   width: 100% !important;
   position: fixed !important;
@@ -42,21 +42,27 @@
   background-color: #889B4A !important;
   color: black;
 }
-
+.panelHello {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
 .helloText {
-  background-color: #064829 !important;
   color:#E1C6A8;
   font-size: 18px;
   font-weight: 700;
-  border-radius: 15px;
-  padding: 8px 15px;
-  margin: 15px 5px;
-  border: 1px solid #064829;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  /* margin: 15px 30px; */
   transition: all 0.3s ease-in;
 }
-.panelHello {
-  text-align: center;
-  margin: 5px;
-  padding: 8px 15px;
+
+
+.changeLangDrawer{
+  position: relative;
+  width: 35%;
+  z-index: 1000;
 }
+

@@ -6,6 +6,7 @@ import { LanguageContext } from "@/context/LanguageContext.tsx";
 // Style
 import style from "@/components/language/ChangeLang.module.css";
 
+
 // images
 import EnglishFlag from "@/assets/public/img/English.png";
 import IranFlag from "@/assets/public/img/Farsi.png";
@@ -18,11 +19,17 @@ import { useTranslation } from "react-i18next";
 function ChangeLang(): JSX.Element {
   // states
   const [open, setOpen] = useState<boolean>(false);
-  const { language: selectedLang, changeLanguage } =
-    useContext(LanguageContext);
+  const { language: selectedLang, changeLanguage } = useContext(LanguageContext);
   const { i18n } = useTranslation();
   const isFa = i18n.language === "fa";
-  const direction = isFa ? "rtl" : "ltr";
+  const direction = isFa ? "rtl" : "ltr";  
+  const languagePosition = i18n.dir() === "rtl" ? {
+    top: "50px",
+    left: "0px"
+  } : {
+    top: "50px",
+    right: "-100px"
+  }
 
   const handleClick = () => {
     setOpen((prev) => !prev);
@@ -40,7 +47,7 @@ function ChangeLang(): JSX.Element {
 
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
-      <Box className={style.langBox} sx={{ direction: direction, left: isFa ? "90px" : "auto", top: isFa ? "35px" : "35px", right: isFa ? "auto" : "90px" }}>
+      <Box className={style.langBox} sx={{ ...languagePosition, flexDirection: direction === "rtl" ? "row-reverse" : "row" }}>
         <button
           type="button"
           onClick={handleClick}

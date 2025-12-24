@@ -1,6 +1,5 @@
 // Library
 import * as React from "react";
-import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 
 // MUI styles and hooks
@@ -12,11 +11,12 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Box } from "@mui/material";
 
+// store
+import {useStore} from "@/components/store";
+
 // style
 import styles from "@/components/Navbar/Navbar.module.css";
 
-// context
-import { SaveInfoContext } from "@/context/SaveInfo";
 
 const drawerWidth = 240;
 
@@ -44,7 +44,7 @@ export const AppBar = styled(MuiAppBar, {
 
 export function MobileAppBar({ onMenuClick }) {
   const { t } = useTranslation();
-  const { user } = useContext(SaveInfoContext);
+  const user = useStore((state) => state.user);
 
   return (
     <Box className={styles.navbarAppBar}>

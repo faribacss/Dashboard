@@ -22,9 +22,8 @@
 
 .footer {
   width: 100%;
-  background: linear-gradient(to right, #064829, #889B4A);
   color: #CBD5E0;
-  padding: 15px;
+  padding: 25px;
   font-family: "Vazirmatn", "Roboto", sans-serif;
 }
 

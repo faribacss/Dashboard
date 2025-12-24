@@ -1,7 +1,7 @@
 {
   "navbar": {
     "hello": "سلام {{name}}!",
-    "panelMessage": "خوش آمدید",
+    "welcome": "خوش آمدید",
     "logout": "خروج",
     "login": "ورود",
     "home": "خانه",

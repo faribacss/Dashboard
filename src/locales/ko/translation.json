@@ -1,7 +1,7 @@
 {
   "navbar": {
     "hello": "안녕하세요 {{name}}!",
-    "panelMessage": "환영합니다",
+    "welcome": "환영합니다",
     "logout": "로그아웃",
     "login": "로그인",
     "home": "홈",

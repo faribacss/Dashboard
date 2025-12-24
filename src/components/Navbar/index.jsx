@@ -75,7 +75,7 @@ const getActiveTitle = (pathname) => {
 
 export default function Navbar() {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("xl"));
+  const isMobile = useMediaQuery(theme.breakpoints.down(1600));
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const { i18n: i18nInstance } = useTranslation();
   const location = useLocation();

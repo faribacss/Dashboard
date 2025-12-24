@@ -2,7 +2,6 @@
 import * as React from "react";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
-import { useContext } from "react";
 
 // MUI components
 import {
@@ -49,9 +48,11 @@ import getLangProps from "@/utilities/getLangFontClass";
 // import CalendarComponent from "@/components/Calendar";
 
 // context
-import { SaveInfoContext } from "@/context/SaveInfo";
 import showSuccessAlert from "@/utilities/showSuccessAlert";
 import showErrorAlert from "@/utilities/showErrorAlert";
+
+// store
+import { useStore } from "@/components/store";
 
 // Post Table
 function Row({ post }) {
@@ -84,7 +85,9 @@ function Row({ post }) {
       },
     });
   };
-  const { user } = useContext(SaveInfoContext);
+
+  const user = useStore((state) => state.user);
+
   return (
     // List of Posts
     <TableRow className={styles.tableRow} hover onClick={postSelectedHandler}>

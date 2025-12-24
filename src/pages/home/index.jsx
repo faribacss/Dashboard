@@ -11,14 +11,17 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 // components
-import HomeArticles from "@/components/homeArticles";
+import Card from "@/components/Card";
 import Navbar from "@/components/Navbar";
+import Loading from "@/components/Loading";
 
 // services
 import { GetAllPost } from "@/services/posts";
 
 // MUI components
 import { Box, Container, Grid, TextField, Typography } from "@mui/material";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 function Home() {
   const { t, i18n } = useTranslation();
@@ -26,8 +29,14 @@ function Home() {
   const { data: posts, isLoading } = GetAllPost();
   const [searchTerm, setSearchTerm] = useState("");
   const filteredPosts = posts?.filter((post) =>
-    post.content.toLowerCase().includes(searchTerm.toLowerCase())
+    post.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  const [page, setPage] = useState(1);
+  const postPerPage = 3;
+  const indexOfLastPost = page * postPerPage;
+  const indexOfFirstPost = indexOfLastPost - postPerPage;
+  const currentPosts = filteredPosts?.slice(indexOfFirstPost, indexOfLastPost);
+  const count = Math.ceil((filteredPosts?.length || 0) / postPerPage);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -38,7 +47,7 @@ function Home() {
       <Navbar />
       <Box
         sx={{
-          maxWidth: "1400px",
+          maxWidth: "1300px",
           margin: "0 auto",
         }}
       >
@@ -73,25 +82,41 @@ function Home() {
                 className="dots-container"
                 sx={{ display: "flex", justifyContent: "center" }}
               >
-                <Typography>Loading ...</Typography>
+                <Loading />
               </Container>
             ) : (
               <Grid container spacing={4} className={styles.postsContainer}>
-                {filteredPosts?.map((post) => (
-                  <Grid
-                    xs={12}
-                    md={3}
-                    lg={3}
-                    key={post.id}
-                    className={styles.postItems}
-                  >
-                    <HomeArticles {...post} />
+                {currentPosts?.map((post) => (
+                  <Grid key={post.id} className={styles.postItems}>
+                    <Card {...post} />
                   </Grid>
                 ))}
               </Grid>
             )}
           </Grid>
         </Grid>
+        <Stack
+          sx={{
+            margin: "50px auto",
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          spacing={2}
+        >
+          <Pagination
+            sx={{
+              "& .MuiPaginationItem-icon": {
+                transform: isRtl ? "rotate(180deg)" : "none",
+              },
+            }}
+            count={count}
+            page={page}
+            onChange={(e, value) => setPage(value)}
+            color="standard"
+          />
+        </Stack>
       </Box>
     </>
   );

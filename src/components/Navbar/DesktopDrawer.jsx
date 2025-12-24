@@ -3,10 +3,16 @@ import * as React from "react";
 
 // MUI components
 import Drawer from "@mui/material/Drawer";
+import { useTranslation } from "react-i18next";
 
 const drawerWidth = 240;
 
 export function DesktopDrawer({ children, isRtl }) {
+  const { i18n } = useTranslation();
+
+  const rtlStyle = i18n.dir() === "rtl"
+    ? { background: "linear-gradient(to left,  #064829, #889B4A)" }
+    : { background: "linear-gradient(to right,  #064829, #889B4A)" };
   return (
     <Drawer
       variant="permanent"
@@ -16,7 +22,7 @@ export function DesktopDrawer({ children, isRtl }) {
         flexShrink: 0,
         "& .MuiDrawer-paper": {
           width: drawerWidth,
-          background: "linear-gradient(to right, #064829, #889B4A)",
+          ...rtlStyle,
           border: "none",
           boxSizing: "border-box",
           color: "bisque",

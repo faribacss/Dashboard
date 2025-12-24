@@ -2,12 +2,16 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
+// store
+import { useStore } from "@/components/store";
+
 const API_BASE_URL = "https://strapi.arvanschool.ir/";
 
 function getAuthHeaders() {
+  const jwt = useStore.getState().jwt;
   return {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    Authorization: `Bearer ${jwt}`,
   };
 }
 
@@ -17,7 +21,7 @@ export function GetAllPost() {
     queryKey: ["posts"],
     queryFn: () =>
       axios
-        .get(`${API_BASE_URL}api/posts/`, {
+        .get(`${API_BASE_URL}api/posts`, {
           headers: getAuthHeaders(),
         })
         .then((res) => res.data.data),

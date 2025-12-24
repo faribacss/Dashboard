@@ -1,6 +1,5 @@
 // library
 import { useTranslation } from "react-i18next";
-import { useContext } from "react";
 
 // style
 import styles from "@/components/Footer/Footer.module.css";
@@ -14,9 +13,6 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 
 // utilities
 import getLangProps from "@/utilities/getLangFontClass";
-
-// context
-import { SaveInfoContext } from "@/context/SaveInfo";
 
 const socialLinks = [
   {
@@ -52,47 +48,44 @@ const socialLinks = [
 ];
 
 export default function Footer() {
-  const { jwt } = useContext(SaveInfoContext) || {};
   const { fontClass: langFontClass } = getLangProps(styles);
   const { t, i18n } = useTranslation();
   const isRtl = i18n.dir() === "rtl";
-
+  const rtlStyle = isRtl
+    ? { background: "linear-gradient(to left, #889B4A, #064829)" }
+    : { background: "linear-gradient(to right, #889B4A, #064829)" };
   return (
     <>
-      {jwt ? (
-        <>
-          <footer className={styles.footer}>
-            <div
-              className={`${styles.container} ${langFontClass} ${
-                isRtl ? styles.rtl : ""
-              }`}
-            >
-              <div className={styles.brand}>
-                <span className={styles.logo}>{t("footer.BlogPage")}</span>
-                <span className={styles.slogan}>{t("footer.description")}</span>
-              </div>
-              <div className={styles.socials}>
-                {socialLinks.map(({ name, url, icon, color }) => (
-                  <a
-                    key={name}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={name}
-                    className={styles.socialLink}
-                    style={{ "--icon-hover-color": color }}
-                  >
-                    {icon}
-                  </a>
-                ))}
-              </div>
-            </div>
-            <div className={`${styles.copyright} ${langFontClass}`}>
-              {t("footer.rights")} {new Date().getFullYear()}
-            </div>
-          </footer>
-        </>
-      ) : null}
+      <footer className={styles.footer} style={{ ...rtlStyle }}>
+        <div
+          className={`${styles.container} ${langFontClass} ${
+            isRtl ? styles.rtl : ""
+          }`}
+        >
+          <div className={styles.brand}>
+            <span className={styles.logo}>{t("footer.BlogPage")}</span>
+            <span className={styles.slogan}>{t("footer.description")}</span>
+          </div>
+          <div className={styles.socials}>
+            {socialLinks.map(({ name, url, icon, color }) => (
+              <a
+                key={name}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={name}
+                className={styles.socialLink}
+                style={{ "--icon-hover-color": color }}
+              >
+                {icon}
+              </a>
+            ))}
+          </div>
+        </div>
+        <div className={`${styles.copyright} ${langFontClass}`}>
+          {t("footer.rights")} {new Date().getFullYear()}
+        </div>
+      </footer>
     </>
   );
 }

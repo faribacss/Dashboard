@@ -10,23 +10,7 @@
   font-weight: 400;
   font-size: 16px;
 }
-/* .forgotpass{
-    position: relative;
-}
-.forgotpass::after {
-    content: 'forgot password';
-    direction: rtl;
-    position: absolute;
-    bottom: -3px;
-    right: 0;
-    display: block;
-    width: 100%;
-    height: 1px;
-    color: #0C2A92;
-    cursor: pointer;
-} */
-
-.rememberMeLabel {
+.rememberMeLabel{
   width: fit-content;
 }
 

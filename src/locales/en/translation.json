@@ -1,7 +1,7 @@
 {
   "navbar": {
     "hello": "Hello {{name}}!",
-    "panelMessage": "Welcome",
+    "welcome": "Welcome",
     "logout": "Logout",
     "login": "Login",
     "home": "Home",

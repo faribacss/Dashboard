@@ -16,7 +16,6 @@ import Panel from "@/pages/panel";
 import PostId from "@/pages/postId";
 
 // Context
-import { SaveInfoProvider } from "@/context/SaveInfo";
 import { LanguageProvider, LanguageRoot } from "./context/LanguageContext.js";
 
 
@@ -27,9 +26,7 @@ export default function App() {
   return (
     <div className="mainContainer">
       <div className="progress"></div>
-      <SaveInfoProvider>
         <LanguageProvider>
-
           <div className="content">
             <LanguageRoot>
               <Routes>
@@ -82,7 +79,6 @@ export default function App() {
           </div>
           <Footer />
         </LanguageProvider>
-      </SaveInfoProvider>
     </div>
   );
 }

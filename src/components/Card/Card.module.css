@@ -25,13 +25,17 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  background-color: #e8fcf27a;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 .cardImg {
-  width: 100%;
-  height: 210px;
+  width: 290px;
+  height: 290px;
   margin: 0 auto;
-  border-radius: 8px;
-  margin-top: 10px;
+  border: 1px solid #06482984;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 .spacer {
   display: flex;
@@ -52,14 +56,9 @@
 }
 
 .cardBody {
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   margin: 5px;
   padding: 10px 5px;
-  border-top-right-radius: 50px;
-  border-bottom-left-radius: 50px;
-  border-top-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-radius: 20px;
   transition: all 0.3s ease-in-out;
 }
 .cardBody:hover {

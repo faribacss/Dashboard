@@ -1,12 +1,14 @@
 // Library
-import { useState, useContext, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
-// Context
-import { SaveInfoContext } from "@/context/SaveInfo";
+// store
+import { useStore } from "@/components/store";
+
+// language context
 import ChangeLang from "@/components/language/ChangeLang";
 
 // Components
@@ -66,14 +68,18 @@ function LoginPage() {
   }, [i18n?.language]);
 
   const [identifierValue, passwordValue] = watch(["identifier", "password"]);
+  const isPasswordEmpty = !passwordValue || passwordValue.length === 0;
+  const getDynamicPosition = () => {
+    if (!isRtl) return { right: 0 };
+    return isPasswordEmpty ? { left: 0 } : { right: 0 };
+  };
   const allFilled = Boolean(identifierValue && passwordValue);
 
-  // state and context
-  const context = useContext(SaveInfoContext);
-  if (!context) {
-    throw new Error("SaveInfoContext must be used within SaveInfoProvider");
-  }
-  const { loginUser } = context;
+  // zustand store
+  const loginUser = useStore((state) => state.loginUser);
+  
+
+  // states
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [rememberMe, setRememberMe] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
@@ -90,11 +96,9 @@ function LoginPage() {
       });
       setIsSuccess(true);
       showSuccessAlert("login");
-      // Navigate after short delay to show success state
       setTimeout(() => {
         navigate("/panel");
       }, 1000);
-
       return user;
     } catch (error: any) {
       // error message from API
@@ -137,13 +141,22 @@ function LoginPage() {
                       className="auth-text-field"
                       variant="outlined"
                       color="success"
-                      InputLabelProps={{
-                        style: {
-                          width: "100%",
-                          textAlign: isRtl ? "right" : "left",
-                          direction: isRtl ? "rtl" : "ltr",
+                      InputProps={{
+                        sx: {
+                          "& input": {
+                            textAlign: "left",
+                            direction: "ltr",
+                          },
+                          "& input::placeholder": {
+                            textAlign: isRtl ? "right" : "left",
+                            direction: isRtl ? "rtl" : "ltr",
+                          },
                         },
                       }}
+                      inputProps={{
+                        style: { textAlign: "left", direction: "ltr" },
+                      }}
+                      InputLabelProps={{ shrink: false }}
                       error={!!errors.identifier}
                       helperText={errors.identifier?.message}
                       FormHelperTextProps={{
@@ -161,32 +174,35 @@ function LoginPage() {
                       type={showPassword ? "text" : "password"}
                       {...register("password")}
                       placeholder={t("login.passwordLabel")}
-                      InputLabelProps={{
-                        style: {
-                          width: "100%",
-                          textAlign: isRtl ? "right" : "left",
-                          direction: isRtl ? "rtl" : "ltr",
-                        },
-                      }}
-                      FormHelperTextProps={{
-                        sx: {
-                          textAlign: isRtl ? "right" : "left",
-                          direction: isRtl ? "rtl" : "ltr",
-                        },
-                      }}
                       className="auth-text-field"
                       variant="outlined"
                       color="success"
                       error={!!errors.password}
                       helperText={errors.password?.message}
+                      sx={{
+                        "& input": {
+                          textAlign: "left",
+                          direction: "ltr",
+                        },
+                        "& input::placeholder": {
+                          textAlign: isRtl ? "right" : "left",
+                        },
+                      }}
                       InputProps={{
                         endAdornment: (
                           <ShowPassword
                             showPassword={showPassword}
                             onToggle={() => setShowPassword(!showPassword)}
+                            dynamicPosition={getDynamicPosition()}
                           />
                         ),
-                        style: { direction: isRtl ? "rtl" : "ltr" },
+                      }}
+                      InputLabelProps={{ shrink: false }}
+                      FormHelperTextProps={{
+                        sx: {
+                          textAlign: isRtl ? "right" : "left",
+                          direction: isRtl ? "rtl" : "ltr",
+                        },
                       }}
                     />
                   </Grid>

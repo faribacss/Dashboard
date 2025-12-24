@@ -23,6 +23,7 @@
   background-color: #3d4347;
   border: 1px solid #3d4347;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   height: auto;
   border-radius: 15px;
@@ -274,23 +275,7 @@
   border-radius: 10px 0 0 10px;
 }
 
-/* @media screen and (max-width: 992px) {
-  .calendarGrid {
-    width: 100%;
-  }
-} */
-@media screen and (max-width: 720px) {
-  .gridItem,
-  .statValue {
-    font-size: 12px;
-    padding: 10px;
-  }
-  .tableContainer{
-    padding: 15px;
-    margin: 10px auto;
-    width: 100%;
-  }
-}
+/* Responsive Design */
 @media screen and (max-width: 992px) {
   .statValue {
     font-size: 13px;
@@ -304,11 +289,39 @@
   .createIcon {
     font-size: 35px;
   }
-
   .barChart{
     padding: 0;
     margin: 0 auto;
   }
+}
 
-  
+@media screen and (max-width: 720px) {
+  .gridItem,
+  .statValue {
+    font-size: 12px;
+    padding: 8px;
+    text-align: start;
+  }
+  .icon,
+  .createIcon {
+    font-size: 25px;
+  }
+  .tableContainer{
+    padding: 15px;
+    margin: 10px auto;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .icon,
+  .createIcon {
+    font-size: 25px;
+  }
+  .gridItem,
+  .statValue{
+    font-size: 13px;
+    padding: 8px;
+    text-align: start;
+  }
 }

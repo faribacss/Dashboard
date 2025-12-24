@@ -1,12 +1,12 @@
 // Library
-import { useState, useContext, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
 // Context
-import { SaveInfoContext } from "@/context/SaveInfo";
+import { useStore } from "@/components/store";
 import ChangeLang from "@/components/language/ChangeLang";
 
 // Components
@@ -86,7 +86,7 @@ function SignUpPage() {
   const allFilled = Boolean(usernameValue && passwordValue && emailValue);
 
   // state and context
-  const { register: registerUser } = useContext(SaveInfoContext);
+  const registeruser = useStore((state) => state.register);
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [checkPolicy, setCheckPolicy] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
@@ -94,7 +94,7 @@ function SignUpPage() {
 
   const handleRegister = async (data) => {
     try {
-      const user = await registerUser(data);
+      const user = await registeruser(data);
       setIsSuccess(true);
       showSuccessAlert("signUp");
 

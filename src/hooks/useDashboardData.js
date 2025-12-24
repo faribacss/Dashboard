@@ -20,7 +20,7 @@ export function generateWeeklyData(posts) {
     return DAYS_OF_WEEK.map((day) => ({
       TotalPageviews: 8,
       PublishedPosts: 0,
-      ActiveAuthors: new Set(),
+      ActiveAuthors: 0,
       week: day,
     }));
   }
@@ -99,7 +99,13 @@ export function generateMonthlyData(posts) {
   const sortedKeys = Array.from(monthlyMap.keys()).sort(
     (a, b) => new Date(a) - new Date(b)
   );
-  return sortedKeys.map((key) => monthlyMap.get(key));
+  return sortedKeys.map((key) => {
+    const data = monthlyMap.get(key);
+    return {
+      ...data,
+      ActiveAuthors: data.ActiveAuthors.size,
+    };
+  });
 }
 
 // Value formatter

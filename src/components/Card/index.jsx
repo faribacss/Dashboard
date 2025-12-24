@@ -1,11 +1,10 @@
 // library
 import { Link } from "react-router-dom";
-import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import Aos from "aos";
 
-// context
-import { SaveInfoContext } from "@/context/SaveInfo";
+// store
+import { useStore } from "@/components/store";
 
 // utilities
 import getLangProps from "@/utilities/getLangFontClass";
@@ -27,40 +26,16 @@ import Favorite from "@mui/icons-material/Favorite";
 import errorImg from "@/assets/public/img/notFound.png";
 
 // style
-import styles from "@/components/homeArticles/HomeArticles.module.css";
+import styles from "@/components/Card/Card.module.css";
 
-function HomeArticles({
-  title,
-  id,
-  documentId,
-  content,
-  url,
-  publishedAt,
-  author,
-}) {
+function Card({ title, id, documentId, content, url, publishedAt, author }) {
   const { fontClass: langFontClass } = getLangProps(styles);
   Aos.init({ duration: 1000 });
-  const { user } = useContext(SaveInfoContext);
-  const { t, i18n } = useTranslation();
-  const isRtl = i18n.dir() === "rtl";
-
-  const alignStyle = isRtl
-    ? {
-        borderLeft: "8px solid #3d4347",
-        borderRight: "1px solid #3d4347",
-        borderTop: "2px solid #3d4347",
-        borderBottom: "2px solid #3d4347",
-      }
-    : {
-        borderRight: "8px solid #3d4347",
-        borderLeft: "1px solid #3d4347",
-        borderTop: "2px solid #3d4347",
-        borderBottom: "2px solid #3d4347",
-      };
-
+  const user = useStore((state) => state.user);
+  const { t } = useTranslation();
   return (
     <Container key={id} className={`${styles.card} ${langFontClass}`}>
-      <Box className={styles.cardBody} sx={{ ...alignStyle }}>
+      <Box className={styles.cardBody}>
         <Box
           sx={{
             display: "flex",
@@ -143,4 +118,4 @@ function HomeArticles({
     </Container>
   );
 }
-export default HomeArticles;
+export default Card;

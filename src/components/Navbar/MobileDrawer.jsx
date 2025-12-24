@@ -4,6 +4,7 @@ import * as React from "react";
 // MUI components
 import { styled } from "@mui/material/styles";
 import Drawer from "@mui/material/Drawer";
+import { useTranslation } from "react-i18next";
 
 const drawerWidth = 240;
 
@@ -16,6 +17,12 @@ export const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export function MobileDrawer({ open, onClose, children, isRtl }) {
+  const { i18n } = useTranslation();
+
+  const rtlStyle =
+    i18n.dir() === "rtl"
+      ? { background: "linear-gradient(to left,  #064829, #889B4A)" }
+      : { background: "linear-gradient(to right,  #064829, #889B4A)" };
 
   return (
     <Drawer
@@ -30,9 +37,9 @@ export function MobileDrawer({ open, onClose, children, isRtl }) {
         "& .MuiDrawer-paper": {
           width: drawerWidth,
           boxSizing: "border-box",
-          background: "linear-gradient(to right, #064829, #889B4A)",
+          ...rtlStyle,
           color: "bisque",
-          ...(isRtl && {direction: "rtl"}),
+          ...(isRtl && { direction: "rtl" }),
           boxShadow:
             "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
         },
