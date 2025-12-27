@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
 // Context
-import { useStore } from "@/components/store";
+import { useStore } from "@/store";
 import ChangeLang from "@/components/language/ChangeLang";
 
 // Components

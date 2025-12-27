@@ -2,7 +2,7 @@
 import { Navigate } from "react-router-dom";
 
 // Store
-import { useStore } from "@/components/store";
+import { useStore } from "@/store";
 
 // Protected Route Component
 export const PrivateRoute = ({ children }) => {

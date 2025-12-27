@@ -67,7 +67,14 @@
 .cardContent {
   padding: 15px 10px;
 }
-
+.postTitle{
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 290px;
+}
 .cardContent {
   display: flex;
   flex-direction: column;

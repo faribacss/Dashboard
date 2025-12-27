@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
 // store
-import { useStore } from "@/components/store";
+import { useStore } from "@/store";
 
 // language context
 import ChangeLang from "@/components/language/ChangeLang";
@@ -77,7 +77,6 @@ function LoginPage() {
 
   // zustand store
   const loginUser = useStore((state) => state.loginUser);
-  
 
   // states
   const [showPassword, setShowPassword] = useState<boolean>(false);

@@ -52,7 +52,7 @@ import showSuccessAlert from "@/utilities/showSuccessAlert";
 import showErrorAlert from "@/utilities/showErrorAlert";
 
 // store
-import { useStore } from "@/components/store";
+import { useStore } from "@/store";
 
 // Post Table
 function Row({ post }) {

@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import Aos from "aos";
 
 // store
-import { useStore } from "@/components/store";
+import { useStore } from "@/store";
 
 // utilities
 import getLangProps from "@/utilities/getLangFontClass";
@@ -61,6 +61,7 @@ function Card({ title, id, documentId, content, url, publishedAt, author }) {
         </Box>
         <Box className={styles.cardContent}>
           <Typography
+          className={`${langFontClass} ${styles.postTitle}`}
             variant="h6"
             sx={{ mb: 1, fontFamily: "monospace", fontWeight: "bold" }}
           >

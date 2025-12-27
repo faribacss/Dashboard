@@ -51,7 +51,7 @@ import cloudySnowing from "@/assets/public/img/icons/snowman.png";
 import Snowing from "@/assets/public/img/icons/snowy.png";
 
 // store
-import { useStore } from "@/components/store";
+import { useStore } from "@/store";
 
 // Components
 import ChangeLang from "@/components/language/ChangeLang";
@@ -86,8 +86,12 @@ export function DrawerContent({ activeTitle, onItemClick }) {
     if (month >= 2 && month <= 4)
       return (
         <>
-          <img src={sakura} alt="Sakura" style={{ width: 35, height: 35}} />
-          <img src={springTree} alt="Spring Tree" style={{ width: 35, height: 35}} />
+          <img src={sakura} alt="Sakura" style={{ width: 35, height: 35 }} />
+          <img
+            src={springTree}
+            alt="Spring Tree"
+            style={{ width: 35, height: 35 }}
+          />
         </>
       );
     if (month >= 5 && month <= 7)
@@ -109,11 +113,7 @@ export function DrawerContent({ activeTitle, onItemClick }) {
             alt="Autumn Tree"
             style={{ width: 35, height: 35 }}
           />
-          <img
-            src={pumpkin}
-            alt="Pumpkin"
-            style={{ width: 35, height: 35 }}
-          />
+          <img src={pumpkin} alt="Pumpkin" style={{ width: 35, height: 35 }} />
         </>
       );
     return (
@@ -121,9 +121,9 @@ export function DrawerContent({ activeTitle, onItemClick }) {
         <img
           src={cloudySnowing}
           alt="Cloudy Snowing"
-          style={{ width: 35, height: 35}}
+          style={{ width: 35, height: 35 }}
         />
-        <img src={Snowing} alt="Snowing" style={{ width: 35, height: 35}} />
+        <img src={Snowing} alt="Snowing" style={{ width: 35, height: 35 }} />
       </>
     );
   };
@@ -131,7 +131,7 @@ export function DrawerContent({ activeTitle, onItemClick }) {
   useEffect(() => {
     const timer = setInterval(() => {
       setStep((prev) => (prev + 1) % 4);
-    }, 3000);
+    }, 2000);
     return () => clearInterval(timer);
   }, []);
 

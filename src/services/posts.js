@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
 // store
-import { useStore } from "@/components/store";
+import { useStore } from "@/store";
 
 const API_BASE_URL = "https://strapi.arvanschool.ir/";
 

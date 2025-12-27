@@ -12,11 +12,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Box } from "@mui/material";
 
 // store
-import {useStore} from "@/components/store";
+import { useStore } from "@/store";
 
 // style
 import styles from "@/components/Navbar/Navbar.module.css";
-
 
 const drawerWidth = 240;
 
@@ -66,7 +65,7 @@ export function MobileAppBar({ onMenuClick }) {
         noWrap
         component="div"
       >
-        {t("navbar.hello", { name: user.username})}
+        {t("navbar.hello", { name: user.username })}
       </Typography>
     </Box>
   );
