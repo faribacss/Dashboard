@@ -84,6 +84,11 @@ function SignUpPage() {
     "password",
   ]);
   const allFilled = Boolean(usernameValue && passwordValue && emailValue);
+  const isPasswordEmpty = !passwordValue || passwordValue.length === 0;
+  const getDynamicPosition = () => {
+    if (!isRtl) return { right: 0 };
+    return isPasswordEmpty ? { left: 0 } : { right: 0 };
+  };
 
   // state and context
   const registeruser = useStore((state) => state.register);
@@ -160,9 +165,24 @@ function SignUpPage() {
                     autoComplete="new-username"
                     error={!!errors.username}
                     helperText={errors.username?.message}
-                    InputLabelProps={{
-                      style: {
-                        width: "100%",
+                    InputProps={{
+                      sx: {
+                        "& input": {
+                          textAlign: "left",
+                          direction: "ltr",
+                        },
+                        "& input::placeholder": {
+                          textAlign: isRtl ? "right" : "left",
+                          direction: isRtl ? "rtl" : "ltr",
+                        },
+                      },
+                    }}
+                    inputProps={{
+                      style: { textAlign: "left", direction: "ltr" },
+                    }}
+                    InputLabelProps={{ shrink: false }}
+                    FormHelperTextProps={{
+                      sx: {
                         textAlign: isRtl ? "right" : "left",
                         direction: isRtl ? "rtl" : "ltr",
                       },
@@ -182,9 +202,24 @@ function SignUpPage() {
                     autoComplete="new-email"
                     error={!!errors.email}
                     helperText={errors.email?.message}
-                    InputLabelProps={{
-                      style: {
-                        width: "100%",
+                    InputProps={{
+                      sx: {
+                        "& input": {
+                          textAlign: "left",
+                          direction: "ltr",
+                        },
+                        "& input::placeholder": {
+                          textAlign: isRtl ? "right" : "left",
+                          direction: isRtl ? "rtl" : "ltr",
+                        },
+                      },
+                    }}
+                    inputProps={{
+                      style: { textAlign: "left", direction: "ltr" },
+                    }}
+                    InputLabelProps={{ shrink: false }}
+                    FormHelperTextProps={{
+                      sx: {
                         textAlign: isRtl ? "right" : "left",
                         direction: isRtl ? "rtl" : "ltr",
                       },
@@ -204,11 +239,13 @@ function SignUpPage() {
                     autoComplete="new-password"
                     error={!!errors.password}
                     helperText={errors.password?.message}
-                    InputLabelProps={{
-                      style: {
-                        width: "100%",
+                    sx={{
+                      "& input": {
+                        textAlign: "left",
+                        direction: "ltr",
+                      },
+                      "& input::placeholder": {
                         textAlign: isRtl ? "right" : "left",
-                        direction: isRtl ? "rtl" : "ltr",
                       },
                     }}
                     InputProps={{
@@ -216,9 +253,16 @@ function SignUpPage() {
                         <ShowPassword
                           showPassword={showPassword}
                           onToggle={() => setShowPassword(!showPassword)}
+                          dynamicPosition={getDynamicPosition()}
                         />
                       ),
-                      style: { direction: isRtl ? "rtl" : "ltr" },
+                    }}
+                    InputLabelProps={{ shrink: false }}
+                    FormHelperTextProps={{
+                      sx: {
+                        textAlign: isRtl ? "right" : "left",
+                        direction: isRtl ? "rtl" : "ltr",
+                      },
                     }}
                   />
                 </Grid>
